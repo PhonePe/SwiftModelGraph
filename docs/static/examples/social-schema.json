@@ -1,0 +1,534 @@
+[
+  {
+    "associatedKeys": [],
+    "metaData": {
+      "description": "Blog post with rich content and comments"
+    },
+    "schemaId": "blog_post",
+    "schemaDefinition": {
+      "$schema": "https://json-schema.org/draft/2020-12/schema",
+      "properties": {
+        "author": {
+          "properties": {
+            "avatarUrl": {
+              "type": "string"
+            },
+            "bio": {
+              "type": "string"
+            },
+            "displayName": {
+              "type": "string"
+            },
+            "email": {
+              "description": "Author email",
+              "pattern": "^[^@]+@[^@]+\\\\.[^@]+$",
+              "type": "string"
+            },
+            "id": {
+              "description": "Unique author identifier",
+              "type": "string"
+            },
+            "socialLinks": {
+              "additionalProperties": {
+                "type": "string"
+              },
+              "type": "object"
+            },
+            "username": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "id",
+            "username",
+            "displayName",
+            "email"
+          ],
+          "type": "object"
+        },
+        "category": {
+          "properties": {
+            "description": {
+              "type": "string"
+            },
+            "id": {
+              "description": "Category identifier",
+              "type": "string"
+            },
+            "name": {
+              "type": "string"
+            },
+            "parentCategory": {
+              "type": "string"
+            },
+            "postCount": {
+              "description": "Number of posts in category",
+              "minimum": 0,
+              "type": "integer"
+            },
+            "slug": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "id",
+            "name",
+            "slug",
+            "postCount"
+          ],
+          "type": "object"
+        },
+        "comments": {
+          "items": {
+            "type": "object"
+          },
+          "type": "array"
+        },
+        "commentsEnabled": {
+          "description": "Whether comments are enabled",
+          "type": "boolean"
+        },
+        "content": {
+          "description": "Post content in Markdown format",
+          "type": "string"
+        },
+        "featuredImage": {
+          "type": "string"
+        },
+        "id": {
+          "description": "Unique post identifier",
+          "type": "string"
+        },
+        "isPublished": {
+          "description": "Whether post is published",
+          "type": "boolean"
+        },
+        "publishedAt": {
+          "type": "string"
+        },
+        "slug": {
+          "description": "URL-friendly slug",
+          "type": "string"
+        },
+        "tags": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "title": {
+          "description": "Post title",
+          "type": "string"
+        },
+        "updatedAt": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "id",
+        "title",
+        "content",
+        "slug",
+        "author",
+        "tags",
+        "isPublished",
+        "commentsEnabled"
+      ],
+      "type": "object"
+    },
+    "status": "APPROVED"
+  },
+  {
+    "associatedKeys": [],
+    "metaData": {
+      "description": "User profile with social connections"
+    },
+    "schemaId": "user_profile",
+    "schemaDefinition": {
+      "$schema": "https://json-schema.org/draft/2020-12/schema",
+      "properties": {
+        "avatarUrl": {
+          "type": "string"
+        },
+        "bio": {
+          "type": "string"
+        },
+        "coverImageUrl": {
+          "type": "string"
+        },
+        "createdAt": {
+          "description": "Account creation date",
+          "type": "string"
+        },
+        "displayName": {
+          "type": "string"
+        },
+        "email": {
+          "description": "User email",
+          "pattern": "^[^@]+@[^@]+\\\\.[^@]+$",
+          "type": "string"
+        },
+        "followers": {
+          "items": {
+            "properties": {
+              "avatarUrl": {
+                "type": "string"
+              },
+              "displayName": {
+                "type": "string"
+              },
+              "userId": {
+                "type": "string"
+              },
+              "username": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "userId",
+              "username",
+              "displayName"
+            ],
+            "type": "object"
+          },
+          "type": "array"
+        },
+        "following": {
+          "items": {
+            "properties": {
+              "avatarUrl": {
+                "type": "string"
+              },
+              "displayName": {
+                "type": "string"
+              },
+              "userId": {
+                "type": "string"
+              },
+              "username": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "userId",
+              "username",
+              "displayName"
+            ],
+            "type": "object"
+          },
+          "type": "array"
+        },
+        "isPrivate": {
+          "description": "Whether account is private",
+          "type": "boolean"
+        },
+        "isVerified": {
+          "description": "Whether account is verified",
+          "type": "boolean"
+        },
+        "location": {
+          "type": "string"
+        },
+        "posts": {
+          "items": {
+            "properties": {
+              "author": {
+                "properties": {
+                  "avatarUrl": {
+                    "type": "string"
+                  },
+                  "displayName": {
+                    "type": "string"
+                  },
+                  "userId": {
+                    "type": "string"
+                  },
+                  "username": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "userId",
+                  "username",
+                  "displayName"
+                ],
+                "type": "object"
+              },
+              "comments": {
+                "items": {
+                  "type": "object"
+                },
+                "type": "array"
+              },
+              "content": {
+                "description": "Post text content",
+                "type": "string"
+              },
+              "editedAt": {
+                "type": "string"
+              },
+              "hashtags": {
+                "items": {
+                  "type": "string"
+                },
+                "type": "array"
+              },
+              "isPinned": {
+                "description": "Whether post is pinned to profile",
+                "type": "boolean"
+              },
+              "likes": {
+                "items": {
+                  "type": "object"
+                },
+                "type": "array"
+              },
+              "mediaUrls": {
+                "items": {
+                  "type": "string"
+                },
+                "type": "array"
+              },
+              "mentions": {
+                "items": {
+                  "type": "string"
+                },
+                "type": "array"
+              },
+              "postedAt": {
+                "description": "Post creation timestamp",
+                "type": "string"
+              },
+              "postId": {
+                "description": "Unique post identifier",
+                "type": "string"
+              },
+              "shares": {
+                "items": {
+                  "properties": {
+                    "upstream": {
+                      "type": "object"
+                    }
+                  },
+                  "required": [
+                    "upstream"
+                  ],
+                  "type": "object"
+                },
+                "type": "array"
+              },
+              "visibility": {
+                "description": "Post visibility setting",
+                "type": "string"
+              }
+            },
+            "required": [
+              "postId",
+              "author",
+              "content",
+              "likes",
+              "comments",
+              "postedAt",
+              "isPinned",
+              "visibility"
+            ],
+            "type": "object"
+          },
+          "type": "array"
+        },
+        "userId": {
+          "description": "Unique user identifier",
+          "type": "string"
+        },
+        "username": {
+          "description": "Username (handle)",
+          "type": "string"
+        },
+        "website": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "userId",
+        "username",
+        "displayName",
+        "email",
+        "createdAt",
+        "isVerified",
+        "isPrivate",
+        "followers",
+        "following"
+      ],
+      "type": "object"
+    },
+    "status": "APPROVED"
+  },
+  {
+    "associatedKeys": [],
+    "metaData": {
+      "description": "Direct message conversation"
+    },
+    "schemaId": "conversation",
+    "schemaDefinition": {
+      "$schema": "https://json-schema.org/draft/2020-12/schema",
+      "properties": {
+        "conversationId": {
+          "description": "Conversation identifier",
+          "type": "string"
+        },
+        "createdAt": {
+          "type": "string"
+        },
+        "messages": {
+          "items": {
+            "type": "object"
+          },
+          "type": "array"
+        },
+        "participants": {
+          "items": {
+            "properties": {
+              "avatarUrl": {
+                "type": "string"
+              },
+              "displayName": {
+                "type": "string"
+              },
+              "userId": {
+                "type": "string"
+              },
+              "username": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "userId",
+              "username",
+              "displayName"
+            ],
+            "type": "object"
+          },
+          "type": "array"
+        },
+        "updatedAt": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "conversationId",
+        "participants",
+        "messages",
+        "createdAt",
+        "updatedAt"
+      ],
+      "type": "object"
+    },
+    "status": "APPROVED"
+  },
+  {
+    "associatedKeys": [],
+    "metaData": {
+      "description": "Notification for user activity"
+    },
+    "schemaId": "notification",
+    "schemaDefinition": {
+      "$schema": "https://json-schema.org/draft/2020-12/schema",
+      "properties": {
+        "actor": {
+          "properties": {
+            "avatarUrl": {
+              "type": "string"
+            },
+            "displayName": {
+              "type": "string"
+            },
+            "userId": {
+              "type": "string"
+            },
+            "username": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "userId",
+            "username",
+            "displayName"
+          ],
+          "type": "object"
+        },
+        "content": {
+          "type": "string"
+        },
+        "createdAt": {
+          "type": "string"
+        },
+        "isRead": {
+          "description": "Whether notification has been read",
+          "type": "boolean"
+        },
+        "notificationId": {
+          "description": "Notification identifier",
+          "type": "string"
+        },
+        "recipient": {
+          "type": "string"
+        },
+        "relatedPost": {
+          "type": "string"
+        },
+        "type": {
+          "description": "Notification type (like, comment, follow, etc.)",
+          "type": "string"
+        }
+      },
+      "required": [
+        "notificationId",
+        "recipient",
+        "type",
+        "actor",
+        "content",
+        "createdAt",
+        "isRead"
+      ],
+      "type": "object"
+    },
+    "status": "APPROVED"
+  },
+  {
+    "associatedKeys": [],
+    "metaData": {
+      "description": "Hashtag with trending information"
+    },
+    "schemaId": "hashtag",
+    "schemaDefinition": {
+      "$schema": "https://json-schema.org/draft/2020-12/schema",
+      "properties": {
+        "isTrending": {
+          "description": "Whether hashtag is currently trending",
+          "type": "boolean"
+        },
+        "postCount": {
+          "description": "Number of posts with this hashtag",
+          "minimum": 0,
+          "type": "integer"
+        },
+        "relatedTags": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "tag": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "tag",
+        "postCount",
+        "isTrending"
+      ],
+      "type": "object"
+    },
+    "status": "APPROVED"
+  }
+]

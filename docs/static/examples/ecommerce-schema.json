@@ -1,0 +1,268 @@
+[
+  {
+    "associatedKeys": [],
+    "metaData": {
+      "description": "Product in the catalog with pricing and inventory"
+    },
+    "schemaId": "product",
+    "schemaDefinition": {
+      "$schema": "https://json-schema.org/draft/2020-12/schema",
+      "properties": {
+        "category": {
+          "type": "object"
+        },
+        "description": {
+          "description": "Product description",
+          "type": "string"
+        },
+        "id": {
+          "description": "Unique product identifier",
+          "type": "string"
+        },
+        "images": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "name": {
+          "description": "Product name",
+          "type": "string"
+        },
+        "price": {
+          "description": "Price in USD",
+          "minimum": 0,
+          "type": "number"
+        },
+        "reviews": {
+          "items": {
+            "type": "object"
+          },
+          "type": "array"
+        },
+        "stock": {
+          "description": "Inventory quantity",
+          "minimum": 0,
+          "type": "integer"
+        }
+      },
+      "required": [
+        "id",
+        "name",
+        "description",
+        "price",
+        "stock",
+        "category",
+        "images"
+      ],
+      "type": "object"
+    },
+    "status": "APPROVED"
+  },
+  {
+    "associatedKeys": [],
+    "metaData": {
+      "description": "Shopping cart order with items and customer info"
+    },
+    "schemaId": "order",
+    "schemaDefinition": {
+      "$schema": "https://json-schema.org/draft/2020-12/schema",
+      "properties": {
+        "billingAddress": {
+          "type": "object"
+        },
+        "createdAt": {
+          "type": "string"
+        },
+        "customer": {
+          "properties": {
+            "email": {
+              "description": "Customer email address",
+              "pattern": "^[^@]+@[^@]+\\\\.[^@]+$",
+              "type": "string"
+            },
+            "firstName": {
+              "type": "string"
+            },
+            "lastName": {
+              "type": "string"
+            },
+            "loyaltyPoints": {
+              "type": "integer"
+            },
+            "phoneNumber": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "email",
+            "firstName",
+            "lastName"
+          ],
+          "type": "object"
+        },
+        "items": {
+          "items": {
+            "properties": {
+              "itemName": {
+                "type": "string"
+              }
+            },
+            "type": "object"
+          },
+          "type": "array"
+        },
+        "orderId": {
+          "description": "Unique order identifier",
+          "type": "string"
+        },
+        "shippingAddress": {
+          "type": "object"
+        },
+        "status": {
+          "description": "Order status",
+          "type": "string"
+        },
+        "total": {
+          "description": "Total order amount",
+          "minimum": 0,
+          "type": "number"
+        },
+        "updatedAt": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "orderId",
+        "items",
+        "customer",
+        "shippingAddress",
+        "total",
+        "status",
+        "createdAt"
+      ],
+      "type": "object"
+    },
+    "status": "APPROVED"
+  },
+  {
+    "associatedKeys": [],
+    "metaData": {
+      "description": "Payment transaction"
+    },
+    "schemaId": "payment",
+    "schemaDefinition": {
+      "$schema": "https://json-schema.org/draft/2020-12/schema",
+      "properties": {
+        "amount": {
+          "description": "Payment amount",
+          "minimum": 0,
+          "type": "number"
+        },
+        "currency": {
+          "type": "string"
+        },
+        "orderId": {
+          "type": "string"
+        },
+        "paymentMethod": {
+          "properties": {
+            "type": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "type"
+          ],
+          "type": "object"
+        },
+        "processedAt": {
+          "type": "string"
+        },
+        "status": {
+          "type": "string"
+        },
+        "transactionId": {
+          "description": "Transaction identifier",
+          "type": "string"
+        }
+      },
+      "required": [
+        "transactionId",
+        "orderId",
+        "amount",
+        "currency",
+        "paymentMethod",
+        "status"
+      ],
+      "type": "object"
+    },
+    "status": "APPROVED"
+  },
+  {
+    "associatedKeys": [],
+    "metaData": {
+      "description": "Schema for selecting a delivery method at checkout"
+    },
+    "schemaId": "delivery_method_schema",
+    "schemaDefinition": {
+      "$schema": "https://json-schema.org/draft/2020-12/schema",
+      "properties": {
+        "model": {
+          "oneOf": [
+            {
+              "properties": {
+                "estimatedDays": {
+                  "description": "Estimated number of business days for delivery",
+                  "maximum": 14,
+                  "minimum": 1,
+                  "type": "integer"
+                },
+                "type": {
+                  "const": "standard"
+                }
+              },
+              "required": [
+                "type",
+                "estimatedDays"
+              ],
+              "title": "StandardDelivery",
+              "type": "object"
+            },
+            {
+              "properties": {
+                "estimatedDays": {
+                  "description": "Estimated number of business days for express delivery",
+                  "maximum": 3,
+                  "minimum": 1,
+                  "type": "integer"
+                },
+                "priority": {
+                  "description": "Priority level for express shipment",
+                  "pattern": "^(high|medium|low)$",
+                  "type": "string"
+                },
+                "type": {
+                  "const": "express"
+                }
+              },
+              "required": [
+                "type",
+                "estimatedDays",
+                "priority"
+              ],
+              "title": "ExpressDelivery",
+              "type": "object"
+            }
+          ],
+          "type": "object"
+        }
+      },
+      "required": [
+        "model"
+      ],
+      "type": "object"
+    },
+    "status": "APPROVED"
+  }
+]

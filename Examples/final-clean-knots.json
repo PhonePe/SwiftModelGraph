@@ -1,0 +1,26 @@
+[
+  {
+    "associatedKeys" : [
+
+    ],
+    "metaData" : {
+      "description" : "Home page configuration with multiple widget types"
+    },
+    "schemaDefinition" : {
+      "$anchor" : "home_page_schema_v1",
+      "items" : {
+        "oneOf" : [
+          {
+            "const" : "Offer_Widget_Request"
+          },
+          {
+            "const" : "search_widget_config"
+          }
+        ],
+        "type" : "string"
+      },
+      "type" : "array"
+    },
+    "status" : "APPROVED"
+  }
+]

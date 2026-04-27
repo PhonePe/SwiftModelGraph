@@ -1,0 +1,419 @@
+[
+  {
+    "associatedKeys" : [
+
+    ],
+    "metaData" : {
+      "description" : ""
+    },
+    "schemaDefinition" : {
+      "$anchor" : "autopay_config",
+      "$schema" : "https:\/\/json-schema.org\/draft\/2020-12\/schema",
+      "properties" : {
+        "apActivationInProgressModel" : {
+          "$anchor" : "message_model",
+          "properties" : {
+            "message" : {
+              "type" : "string"
+            },
+            "status" : {
+              "type" : "string"
+            },
+            "title" : {
+              "type" : "string"
+            }
+          },
+          "type" : "object"
+        },
+        "apEditInProgressModel" : {
+          "$anchor" : "message_model",
+          "properties" : {
+            "message" : {
+              "type" : "string"
+            },
+            "status" : {
+              "type" : "string"
+            },
+            "title" : {
+              "type" : "string"
+            }
+          },
+          "type" : "object"
+        },
+        "apFirstPaymentWidgetEnabled" : {
+          "type" : "boolean"
+        },
+        "apRedemptionInProgressModel" : {
+          "$anchor" : "message_model",
+          "properties" : {
+            "message" : {
+              "type" : "string"
+            },
+            "status" : {
+              "type" : "string"
+            },
+            "title" : {
+              "type" : "string"
+            }
+          },
+          "type" : "object"
+        },
+        "apSIPRegistrationInProgressModel" : {
+          "$anchor" : "message_model",
+          "properties" : {
+            "message" : {
+              "type" : "string"
+            },
+            "status" : {
+              "type" : "string"
+            },
+            "title" : {
+              "type" : "string"
+            }
+          },
+          "type" : "object"
+        },
+        "isActiveAutoPayEnabled" : {
+          "type" : "boolean"
+        },
+        "isAutopayEditEnabled" : {
+          "type" : "boolean"
+        },
+        "isNextPaymentInSettingsEnabled" : {
+          "type" : "boolean"
+        },
+        "isSipDeleteEnabled" : {
+          "type" : "boolean"
+        },
+        "isSipRevokeEnabled" : {
+          "type" : "boolean"
+        }
+      },
+      "type" : "object"
+    },
+    "status" : "APPROVED"
+  },
+  {
+    "associatedKeys" : [
+
+    ],
+    "metaData" : {
+      "description" : ""
+    },
+    "schemaDefinition" : {
+      "$anchor" : "message_model",
+      "$schema" : "https:\/\/json-schema.org\/draft\/2020-12\/schema",
+      "properties" : {
+        "message" : {
+          "type" : "string"
+        },
+        "status" : {
+          "type" : "string"
+        },
+        "title" : {
+          "type" : "string"
+        }
+      },
+      "type" : "object"
+    },
+    "status" : "APPROVED"
+  },
+  {
+    "associatedKeys" : [
+
+    ],
+    "metaData" : {
+      "description" : ""
+    },
+    "schemaDefinition" : {
+      "$anchor" : "slot_action_map1",
+      "$schema" : "https:\/\/json-schema.org\/draft\/2020-12\/schema",
+      "additionalProperties" : {
+        "$anchor" : "notification_action_schema",
+        "oneOf" : [
+          {
+            "$anchor" : "deep_link_model",
+            "properties" : {
+              "deep_link_url" : {
+                "type" : "string"
+              },
+              "fallback_url" : {
+                "type" : "string"
+              },
+              "type" : {
+                "const" : "deep_link"
+              }
+            },
+            "required" : [
+              "type",
+              "deep_link_url"
+            ],
+            "title" : "DeepLinkAction",
+            "type" : "object"
+          },
+          {
+            "properties" : {
+              "track_dismiss" : {
+                "type" : "boolean"
+              },
+              "type" : {
+                "const" : "dismiss"
+              }
+            },
+            "required" : [
+              "type",
+              "track_dismiss"
+            ],
+            "title" : "DismissAction",
+            "type" : "object"
+          },
+          {
+            "properties" : {
+              "open_in_browser" : {
+                "type" : "boolean"
+              },
+              "type" : {
+                "const" : "web_url"
+              },
+              "url" : {
+                "type" : "string"
+              }
+            },
+            "required" : [
+              "type",
+              "url",
+              "open_in_browser"
+            ],
+            "title" : "WebUrlAction",
+            "type" : "object"
+          }
+        ],
+        "type" : "object"
+      },
+      "type" : "object"
+    },
+    "status" : "APPROVED"
+  },
+  {
+    "associatedKeys" : [
+
+    ],
+    "metaData" : {
+      "description" : ""
+    },
+    "schemaDefinition" : {
+      "$anchor" : "deep_link_model",
+      "$schema" : "https:\/\/json-schema.org\/draft\/2020-12\/schema",
+      "properties" : {
+        "deep_link_url" : {
+          "type" : "string"
+        },
+        "fallback_url" : {
+          "type" : "string"
+        },
+        "type" : {
+          "type" : "string"
+        }
+      },
+      "required" : [
+        "type",
+        "deep_link_url"
+      ],
+      "type" : "object"
+    },
+    "status" : "APPROVED"
+  },
+  {
+    "associatedKeys" : [
+
+    ],
+    "metaData" : {
+      "description" : ""
+    },
+    "schemaDefinition" : {
+      "$anchor" : "testing",
+      "$schema" : "https:\/\/json-schema.org\/draft\/2020-12\/schema",
+      "oneOf" : [
+        {
+          "properties" : {
+            "bottomCtas" : {
+              "items" : {
+                "type" : "object"
+              },
+              "type" : "array"
+            },
+            "ctas" : {
+              "items" : {
+                "type" : "object"
+              },
+              "type" : "array"
+            },
+            "ctaText" : {
+              "type" : "string"
+            },
+            "description" : {
+              "type" : "string"
+            },
+            "imageModel" : {
+              "type" : "object"
+            },
+            "imageUrl" : {
+              "type" : "string"
+            },
+            "localizedCtaText" : {
+              "type" : "object"
+            },
+            "localizedDescription" : {
+              "type" : "object"
+            },
+            "localizedTitle" : {
+              "type" : "object"
+            },
+            "testkey" : {
+              "const" : "OPEN_BOTTOM_SHEET"
+            },
+            "title" : {
+              "type" : "string"
+            }
+          },
+          "required" : [
+            "testkey"
+          ],
+          "title" : "BottomSheetModel",
+          "type" : "object"
+        },
+        {
+          "properties" : {
+            "action" : {
+              "type" : "object"
+            },
+            "bottomCtas" : {
+              "items" : {
+                "type" : "object"
+              },
+              "type" : "array"
+            },
+            "ctas" : {
+              "items" : {
+                "type" : "object"
+              },
+              "type" : "array"
+            },
+            "ctaText" : {
+              "type" : "string"
+            },
+            "imageId" : {
+              "type" : "string"
+            },
+            "imageModel" : {
+              "type" : "object"
+            },
+            "localizedCtaText" : {
+              "type" : "object"
+            },
+            "localizedMessage" : {
+              "items" : {
+                "type" : "object"
+              },
+              "type" : "array"
+            },
+            "localizedTitle" : {
+              "type" : "object"
+            },
+            "message" : {
+              "items" : {
+                "type" : "string"
+              },
+              "type" : "array"
+            },
+            "testkey" : {
+              "const" : "OPEN_ERROR_SCREEN"
+            },
+            "title" : {
+              "type" : "string"
+            }
+          },
+          "required" : [
+            "testkey"
+          ],
+          "title" : "ErrorModels",
+          "type" : "object"
+        }
+      ],
+      "type" : "object"
+    },
+    "status" : "APPROVED"
+  },
+  {
+    "associatedKeys" : [
+
+    ],
+    "metaData" : {
+      "description" : ""
+    },
+    "schemaDefinition" : {
+      "$anchor" : "notification_action_schema",
+      "$schema" : "https:\/\/json-schema.org\/draft\/2020-12\/schema",
+      "oneOf" : [
+        {
+          "$anchor" : "deep_link_model",
+          "properties" : {
+            "deep_link_url" : {
+              "type" : "string"
+            },
+            "fallback_url" : {
+              "type" : "string"
+            },
+            "type" : {
+              "const" : "deep_link"
+            }
+          },
+          "required" : [
+            "type",
+            "deep_link_url"
+          ],
+          "title" : "DeepLinkAction",
+          "type" : "object"
+        },
+        {
+          "properties" : {
+            "track_dismiss" : {
+              "type" : "boolean"
+            },
+            "type" : {
+              "const" : "dismiss"
+            }
+          },
+          "required" : [
+            "type",
+            "track_dismiss"
+          ],
+          "title" : "DismissAction",
+          "type" : "object"
+        },
+        {
+          "properties" : {
+            "open_in_browser" : {
+              "type" : "boolean"
+            },
+            "type" : {
+              "const" : "web_url"
+            },
+            "url" : {
+              "type" : "string"
+            }
+          },
+          "required" : [
+            "type",
+            "url",
+            "open_in_browser"
+          ],
+          "title" : "WebUrlAction",
+          "type" : "object"
+        }
+      ],
+      "type" : "object"
+    },
+    "status" : "APPROVED"
+  }
+]

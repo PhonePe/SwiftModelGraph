@@ -1,0 +1,590 @@
+/**
+ * Apple Developer Documentation — inspired theme
+ * Clean, minimal design with SF Pro typography, blue accents,
+ * light gray surfaces, and subtle borders.
+ */
+
+/* ================================================
+   LIGHT MODE (default)
+   ================================================ */
+:root {
+  /* Apple blue */
+  --ifm-color-primary: #0066cc;
+  --ifm-color-primary-dark: #005bb5;
+  --ifm-color-primary-darker: #0055ab;
+  --ifm-color-primary-darkest: #00468d;
+  --ifm-color-primary-light: #0071e3;
+  --ifm-color-primary-lighter: #2997ff;
+  --ifm-color-primary-lightest: #64b5f6;
+
+  /* Typography */
+  --ifm-font-family-base: -apple-system, BlinkMacSystemFont, 'SF Pro Text',
+    'SF Pro Display', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  --ifm-font-family-monospace: 'SF Mono', SFMono-Regular, ui-monospace,
+    Menlo, Monaco, Consolas, monospace;
+  --ifm-heading-font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display',
+    'Helvetica Neue', Helvetica, Arial, sans-serif;
+  --ifm-font-size-base: 17px;
+  --ifm-line-height-base: 1.47059;
+  --ifm-code-font-size: 88%;
+
+  /* Backgrounds */
+  --ifm-background-color: #ffffff;
+  --ifm-background-surface-color: #fbfbfd;
+  --ifm-navbar-background-color: rgba(255, 255, 255, 0.72);
+  --ifm-footer-background-color: #f5f5f7;
+  --ifm-card-background-color: #ffffff;
+
+  /* Borders */
+  --ifm-hr-border-color: #d2d2d7;
+  --ifm-toc-border-color: #d2d2d7;
+  --apple-border-color: #d2d2d7;
+  --apple-separator-color: #e5e5ea;
+
+  /* Text */
+  --ifm-font-color-base: #1d1d1f;
+  --ifm-font-color-secondary: #6e6e73;
+  --ifm-heading-color: #1d1d1f;
+  --ifm-link-color: #0066cc;
+  --ifm-link-hover-color: #004499;
+  --ifm-link-hover-decoration: none;
+
+  /* Sidebar */
+  --ifm-menu-color: #1d1d1f;
+  --ifm-menu-color-active: #0066cc;
+  --ifm-menu-color-background-active: rgba(0, 102, 204, 0.08);
+  --ifm-menu-color-background-hover: rgba(0, 0, 0, 0.04);
+
+  /* Code blocks */
+  --ifm-code-background: #f5f5f7;
+  --ifm-pre-background: #f5f5f7;
+  --ifm-code-border-radius: 8px;
+  --docusaurus-highlighted-code-line-bg: rgba(0, 102, 204, 0.08);
+
+  /* Tables */
+  --ifm-table-stripe-background: rgba(0, 0, 0, 0.02);
+  --ifm-table-border-color: #e5e5ea;
+
+  /* Spacing */
+  --ifm-navbar-height: 52px;
+  --ifm-navbar-shadow: none;
+  --ifm-global-radius: 12px;
+
+  /* Apple-specific tokens */
+  --apple-bg-elevated: #ffffff;
+  --apple-bg-secondary: #f5f5f7;
+  --apple-bg-tertiary: #ebebf0;
+  --apple-text-primary: #1d1d1f;
+  --apple-text-secondary: #6e6e73;
+  --apple-text-tertiary: #86868b;
+  --apple-fill-blue: #0066cc;
+  --apple-fill-gray: #f5f5f7;
+}
+
+/* ================================================
+   DARK MODE
+   ================================================ */
+[data-theme='dark'] {
+  --ifm-color-primary: #2997ff;
+  --ifm-color-primary-dark: #0a84ff;
+  --ifm-color-primary-darker: #0077ed;
+  --ifm-color-primary-darkest: #0066cc;
+  --ifm-color-primary-light: #64b5f6;
+  --ifm-color-primary-lighter: #8ecbff;
+  --ifm-color-primary-lightest: #b8dcff;
+
+  --ifm-background-color: #000000;
+  --ifm-background-surface-color: #1c1c1e;
+  --ifm-navbar-background-color: rgba(22, 22, 24, 0.72);
+  --ifm-footer-background-color: #1c1c1e;
+  --ifm-card-background-color: #1c1c1e;
+
+  --apple-border-color: #38383a;
+  --apple-separator-color: #38383a;
+  --ifm-hr-border-color: #38383a;
+  --ifm-toc-border-color: #38383a;
+
+  --ifm-font-color-base: #f5f5f7;
+  --ifm-font-color-secondary: #a1a1a6;
+  --ifm-heading-color: #f5f5f7;
+  --ifm-link-color: #2997ff;
+  --ifm-link-hover-color: #64b5f6;
+
+  --ifm-menu-color: #f5f5f7;
+  --ifm-menu-color-active: #2997ff;
+  --ifm-menu-color-background-active: rgba(41, 151, 255, 0.12);
+  --ifm-menu-color-background-hover: rgba(255, 255, 255, 0.06);
+
+  --ifm-code-background: rgba(255, 255, 255, 0.08);
+  --ifm-pre-background: #1c1c1e;
+  --docusaurus-highlighted-code-line-bg: rgba(41, 151, 255, 0.12);
+
+  --ifm-table-stripe-background: rgba(255, 255, 255, 0.04);
+  --ifm-table-border-color: #38383a;
+
+  --apple-bg-elevated: #1c1c1e;
+  --apple-bg-secondary: #2c2c2e;
+  --apple-bg-tertiary: #3a3a3c;
+  --apple-text-primary: #f5f5f7;
+  --apple-text-secondary: #a1a1a6;
+  --apple-text-tertiary: #8e8e93;
+  --apple-fill-blue: #2997ff;
+  --apple-fill-gray: #2c2c2e;
+}
+
+/* ================================================
+   GLOBAL RESETS
+   ================================================ */
+
+html {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+body {
+  font-feature-settings: 'kern';
+}
+
+/* ================================================
+   NAVBAR — Apple-style frosted glass bar
+   ================================================ */
+
+.navbar {
+  backdrop-filter: saturate(180%) blur(20px);
+  -webkit-backdrop-filter: saturate(180%) blur(20px);
+  border-bottom: 1px solid var(--apple-separator-color);
+  box-shadow: none;
+  padding: 0 1.5rem;
+}
+
+.navbar__title {
+  font-size: 1.05rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  color: var(--ifm-font-color-base);
+}
+
+.navbar__link {
+  font-size: 0.8rem;
+  font-weight: 400;
+  color: var(--apple-text-secondary);
+  letter-spacing: 0;
+  transition: color 0.2s ease;
+}
+
+.navbar__link:hover {
+  color: var(--ifm-font-color-base);
+}
+
+.navbar__link--active {
+  color: var(--ifm-font-color-base);
+  font-weight: 500;
+}
+
+/* ================================================
+   SIDEBAR — Clean Apple doc nav
+   ================================================ */
+
+.menu {
+  font-size: 0.85rem;
+  padding: 1rem 0.75rem;
+}
+
+.menu__link {
+  border-radius: 8px;
+  padding: 0.4rem 0.75rem;
+  font-weight: 400;
+  transition: background 0.15s ease, color 0.15s ease;
+}
+
+.menu__link--active:not(.menu__link--sublist) {
+  font-weight: 600;
+  color: var(--ifm-menu-color-active);
+  background: var(--ifm-menu-color-background-active);
+}
+
+.menu__list-item-collapsible .menu__link {
+  font-weight: 600;
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--apple-text-tertiary);
+}
+
+.menu__list-item-collapsible .menu__link:hover {
+  background: transparent;
+  color: var(--apple-text-secondary);
+}
+
+/* Sidebar border */
+aside.theme-doc-sidebar-container {
+  border-right: 1px solid var(--apple-separator-color) !important;
+}
+
+/* ================================================
+   BREADCRUMBS
+   ================================================ */
+
+.breadcrumbs {
+  font-size: 0.82rem;
+}
+
+.breadcrumbs__link {
+  color: var(--apple-text-secondary);
+  padding: 0.3rem 0.5rem;
+  border-radius: 6px;
+}
+
+.breadcrumbs__link:hover {
+  background: var(--ifm-menu-color-background-hover);
+}
+
+.breadcrumbs__item--active .breadcrumbs__link {
+  color: var(--ifm-font-color-base);
+  background: transparent;
+}
+
+/* ================================================
+   MAIN CONTENT — Doc pages
+   ================================================ */
+
+.markdown {
+  --ifm-heading-font-weight: 600;
+}
+
+.markdown h1 {
+  font-size: 2rem;
+  font-weight: 700;
+  letter-spacing: -0.015em;
+  line-height: 1.1;
+  margin-bottom: 0.5rem;
+}
+
+.markdown h2 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  margin-top: 2.5rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid var(--apple-separator-color);
+}
+
+.markdown h3 {
+  font-size: 1.17rem;
+  font-weight: 600;
+  letter-spacing: -0.005em;
+  margin-top: 2rem;
+}
+
+.markdown p {
+  line-height: 1.52947;
+  color: var(--apple-text-primary);
+}
+
+.markdown a {
+  text-decoration: none;
+}
+
+.markdown a:hover {
+  text-decoration: underline;
+}
+
+/* ================================================
+   CODE BLOCKS — Clean Apple style
+   ================================================ */
+
+code {
+  border: 1px solid var(--apple-separator-color);
+  border-radius: 4px;
+  padding: 0.15em 0.4em;
+  font-size: var(--ifm-code-font-size);
+  background: var(--ifm-code-background);
+}
+
+pre {
+  border: 1px solid var(--apple-separator-color);
+  border-radius: 8px;
+}
+
+pre code {
+  border: none;
+  padding: 0;
+  background: transparent;
+}
+
+div[class*='codeBlockContainer'] {
+  border-radius: 8px;
+  border: 1px solid var(--apple-separator-color);
+  box-shadow: none;
+  overflow: hidden;
+}
+
+div[class*='codeBlockTitle'] {
+  background: var(--apple-bg-secondary);
+  border-bottom: 1px solid var(--apple-separator-color);
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: var(--apple-text-secondary);
+  padding: 0.5rem 1rem;
+}
+
+/* ================================================
+   TABLES
+   ================================================ */
+
+table {
+  display: table;
+  border-collapse: collapse;
+  width: 100%;
+  font-size: 0.92rem;
+}
+
+table th {
+  background: var(--apple-bg-secondary);
+  font-weight: 600;
+  font-size: 0.82rem;
+  text-transform: none;
+  letter-spacing: 0;
+  color: var(--apple-text-secondary);
+  border-bottom: 1px solid var(--apple-border-color);
+}
+
+table td,
+table th {
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid var(--apple-separator-color);
+}
+
+/* ================================================
+   ADMONITIONS — Clean Apple note style
+   ================================================ */
+
+.admonition {
+  border-radius: 8px;
+  border: 1px solid var(--apple-separator-color);
+  border-left: 4px solid;
+  box-shadow: none;
+  font-size: 0.92rem;
+}
+
+.admonition-heading {
+  font-weight: 600;
+}
+
+/* ================================================
+   TOC — Right table of contents
+   ================================================ */
+
+.table-of-contents {
+  font-size: 0.82rem;
+}
+
+.table-of-contents__link {
+  color: var(--apple-text-secondary);
+  transition: color 0.15s ease;
+}
+
+.table-of-contents__link:hover {
+  color: var(--ifm-font-color-base);
+}
+
+.table-of-contents__link--active {
+  color: var(--ifm-link-color);
+  font-weight: 500;
+}
+
+/* ================================================
+   FOOTER — Apple-style clean footer
+   ================================================ */
+
+.footer {
+  background: var(--ifm-footer-background-color);
+  border-top: 1px solid var(--apple-separator-color);
+  padding: 2.5rem 0 1.5rem;
+}
+
+.footer__title {
+  font-size: 0.7rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--apple-text-tertiary);
+  margin-bottom: 0.75rem;
+}
+
+.footer__link-item {
+  font-size: 0.85rem;
+  color: var(--apple-text-secondary);
+  line-height: 2;
+}
+
+.footer__link-item:hover {
+  color: var(--ifm-link-color);
+  text-decoration: none;
+}
+
+.footer__copyright {
+  font-size: 0.75rem;
+  color: var(--apple-text-tertiary);
+  margin-top: 2rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--apple-separator-color);
+}
+
+[data-theme='dark'] .footer {
+  background: var(--ifm-footer-background-color);
+}
+
+/* ================================================
+   PAGINATION
+   ================================================ */
+
+.pagination-nav__link {
+  border: 1px solid var(--apple-separator-color);
+  border-radius: 12px;
+  padding: 1rem 1.25rem;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.pagination-nav__link:hover {
+  border-color: var(--ifm-link-color);
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.06);
+}
+
+.pagination-nav__sublabel {
+  font-size: 0.72rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--apple-text-tertiary);
+}
+
+.pagination-nav__label {
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: var(--ifm-link-color);
+}
+
+/* ================================================
+   SEARCH
+   ================================================ */
+
+.navbar__search-input {
+  border-radius: 8px;
+  border: 1px solid var(--apple-separator-color);
+  background: var(--apple-bg-secondary);
+  font-size: 0.85rem;
+  padding: 0.4rem 0.75rem;
+}
+
+/* ================================================
+   SCROLLBAR
+   ================================================ */
+
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.15);
+  border-radius: 4px;
+}
+
+[data-theme='dark'] ::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.15);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(0, 0, 0, 0.3);
+}
+
+[data-theme='dark'] ::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.3);
+}
+
+/* ================================================
+   BLOG
+   ================================================ */
+
+.blog-post-page article {
+  max-width: 720px;
+}
+
+article header h1 {
+  font-size: 2rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+article header h2 {
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
+/* ================================================
+   TAGS
+   ================================================ */
+
+.tag {
+  border-radius: 16px;
+  border: 1px solid var(--apple-separator-color);
+  font-size: 0.78rem;
+  padding: 0.2rem 0.65rem;
+  color: var(--apple-text-secondary);
+}
+
+.tag:hover {
+  border-color: var(--ifm-link-color);
+  color: var(--ifm-link-color);
+  text-decoration: none;
+}
+
+/* ================================================
+   RESPONSIVE
+   ================================================ */
+
+@media (max-width: 996px) {
+  .navbar {
+    padding: 0 1rem;
+  }
+}
+
+@media (max-width: 735px) {
+  .markdown h1 {
+    font-size: 1.65rem;
+  }
+
+  .markdown h2 {
+    font-size: 1.3rem;
+  }
+}
+
+/* ================================================
+   MISC
+   ================================================ */
+
+/* DocCard (category landing pages) */
+article.card {
+  border: 1px solid var(--apple-separator-color);
+  border-radius: 12px;
+  box-shadow: none;
+  transition: border-color 0.2s ease;
+}
+
+article.card:hover {
+  border-color: var(--ifm-link-color);
+}
+
+/* Announcement bar */
+div[class*='announcementBar'] {
+  background: var(--apple-fill-blue);
+  color: #ffffff;
+  font-size: 0.85rem;
+  font-weight: 500;
+}

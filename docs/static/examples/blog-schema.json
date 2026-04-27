@@ -1,0 +1,261 @@
+[
+  {
+    "associatedKeys": [],
+    "metaData": {
+      "description": "Blog post with rich content and comments"
+    },
+    "schemaId": "blog_post",
+    "schemaDefinition": {
+      "$schema": "https://json-schema.org/draft/2020-12/schema",
+      "properties": {
+        "author": {
+          "properties": {
+            "avatarUrl": {
+              "type": "string"
+            },
+            "bio": {
+              "type": "string"
+            },
+            "displayName": {
+              "type": "string"
+            },
+            "email": {
+              "description": "Author email",
+              "pattern": "^[^@]+@[^@]+\\\\.[^@]+$",
+              "type": "string"
+            },
+            "id": {
+              "description": "Unique author identifier",
+              "type": "string"
+            },
+            "socialLinks": {
+              "additionalProperties": {
+                "type": "string"
+              },
+              "type": "object"
+            },
+            "username": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "id",
+            "username",
+            "displayName",
+            "email"
+          ],
+          "type": "object"
+        },
+        "category": {
+          "properties": {
+            "description": {
+              "type": "string"
+            },
+            "id": {
+              "description": "Category identifier",
+              "type": "string"
+            },
+            "name": {
+              "type": "string"
+            },
+            "parentCategory": {
+              "type": "string"
+            },
+            "postCount": {
+              "description": "Number of posts in category",
+              "minimum": 0,
+              "type": "integer"
+            },
+            "slug": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "id",
+            "name",
+            "slug",
+            "postCount"
+          ],
+          "type": "object"
+        },
+        "comments": {
+          "items": {
+            "type": "object"
+          },
+          "type": "array"
+        },
+        "commentsEnabled": {
+          "description": "Whether comments are enabled",
+          "type": "boolean"
+        },
+        "content": {
+          "description": "Post content in Markdown format",
+          "type": "string"
+        },
+        "featuredImage": {
+          "type": "string"
+        },
+        "id": {
+          "description": "Unique post identifier",
+          "type": "string"
+        },
+        "isPublished": {
+          "description": "Whether post is published",
+          "type": "boolean"
+        },
+        "publishedAt": {
+          "type": "string"
+        },
+        "slug": {
+          "description": "URL-friendly slug",
+          "type": "string"
+        },
+        "tags": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "title": {
+          "description": "Post title",
+          "type": "string"
+        },
+        "updatedAt": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "id",
+        "title",
+        "content",
+        "slug",
+        "author",
+        "tags",
+        "isPublished",
+        "commentsEnabled"
+      ],
+      "type": "object"
+    },
+    "status": "APPROVED"
+  },
+  {
+    "associatedKeys": [],
+    "metaData": {
+      "description": "Page content for CMS"
+    },
+    "schemaId": "page",
+    "schemaDefinition": {
+      "$schema": "https://json-schema.org/draft/2020-12/schema",
+      "properties": {
+        "content": {
+          "type": "string"
+        },
+        "id": {
+          "description": "Page identifier",
+          "type": "string"
+        },
+        "isPublished": {
+          "description": "Whether page is published",
+          "type": "boolean"
+        },
+        "metadata": {
+          "properties": {
+            "metaDescription": {
+              "type": "string"
+            },
+            "metaKeywords": {
+              "items": {
+                "type": "string"
+              },
+              "type": "array"
+            },
+            "metaTitle": {
+              "type": "string"
+            },
+            "ogImage": {
+              "type": "string"
+            }
+          },
+          "type": "object"
+        },
+        "publishedAt": {
+          "type": "string"
+        },
+        "slug": {
+          "type": "string"
+        },
+        "template": {
+          "type": "string"
+        },
+        "title": {
+          "type": "string"
+        },
+        "updatedAt": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "id",
+        "title",
+        "slug",
+        "content",
+        "isPublished"
+      ],
+      "type": "object"
+    },
+    "status": "APPROVED"
+  },
+  {
+    "associatedKeys": [],
+    "metaData": {
+      "description": "Media file in content library"
+    },
+    "schemaId": "media",
+    "schemaDefinition": {
+      "$schema": "https://json-schema.org/draft/2020-12/schema",
+      "properties": {
+        "altText": {
+          "type": "string"
+        },
+        "caption": {
+          "type": "string"
+        },
+        "filename": {
+          "type": "string"
+        },
+        "id": {
+          "description": "Media file identifier",
+          "type": "string"
+        },
+        "mimeType": {
+          "type": "string"
+        },
+        "size": {
+          "description": "File size in bytes",
+          "minimum": 0,
+          "type": "integer"
+        },
+        "uploadedAt": {
+          "type": "string"
+        },
+        "uploadedBy": {
+          "type": "string"
+        },
+        "url": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "id",
+        "filename",
+        "url",
+        "mimeType",
+        "size",
+        "uploadedBy",
+        "uploadedAt"
+      ],
+      "type": "object"
+    },
+    "status": "APPROVED"
+  }
+]

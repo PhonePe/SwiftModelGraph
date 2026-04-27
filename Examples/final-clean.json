@@ -1,0 +1,961 @@
+[
+  {
+    "associatedKeys" : [
+
+    ],
+    "metaData" : {
+      "description" : ""
+    },
+    "schemaDefinition" : {
+      "$anchor" : "ABC_widgets",
+      "$schema" : "https:\/\/json-schema.org\/draft\/2020-12\/schema",
+      "properties" : {
+        "limit" : {
+          "type" : "integer"
+        },
+        "offerTags" : {
+          "type" : "object"
+        },
+        "radius" : {
+          "type" : "number"
+        }
+      },
+      "required" : [
+        "offerTags"
+      ],
+      "type" : "object"
+    },
+    "status" : "APPROVED"
+  },
+  {
+    "associatedKeys" : [
+
+    ],
+    "metaData" : {
+      "description" : ""
+    },
+    "schemaDefinition" : {
+      "$anchor" : "search_widget_knot",
+      "$schema" : "https:\/\/json-schema.org\/draft\/2020-12\/schema",
+      "properties" : {
+        "category" : {
+          "type" : "string"
+        },
+        "maxResults" : {
+          "type" : "integer"
+        },
+        "query" : {
+          "type" : "string"
+        }
+      },
+      "required" : [
+        "query",
+        "maxResults"
+      ],
+      "type" : "object"
+    },
+    "status" : "APPROVED"
+  },
+  {
+    "associatedKeys" : [
+
+    ],
+    "metaData" : {
+      "description" : "Represents a payment transaction with support for multiple payment methods"
+    },
+    "schemaDefinition" : {
+      "$anchor" : "sample_id_1",
+      "$schema" : "https:\/\/json-schema.org\/draft\/2020-12\/schema",
+      "properties" : {
+        "amount" : {
+          "description" : "The total amount charged for this transaction",
+          "minimum" : 0,
+          "type" : "number"
+        },
+        "legacyType" : {
+          "deprecated" : true,
+          "description" : "Legacy transaction type field",
+          "type" : "string"
+        },
+        "mapData" : {
+          "additionalProperties" : {
+            "properties" : {
+              "data" : {
+                "type" : "string"
+              },
+              "propertyData" : {
+                "properties" : {
+                  "data" : {
+                    "type" : "string"
+                  }
+                },
+                "required" : [
+                  "data"
+                ],
+                "type" : "object"
+              }
+            },
+            "required" : [
+              "data",
+              "propertyData"
+            ],
+            "type" : "object"
+          },
+          "propertyNames" : {
+            "pattern" : "^(true|false)$"
+          },
+          "type" : "object"
+        },
+        "paymentMethod" : {
+          "oneOf" : [
+            {
+              "properties" : {
+                "bic" : {
+                  "description" : "Bank Identifier Code",
+                  "type" : "string"
+                },
+                "iban" : {
+                  "description" : "International Bank Account Number",
+                  "pattern" : "^[A-Z]{2}[0-9]{2}[A-Z0-9]{1,30}$",
+                  "type" : "string"
+                },
+                "payment_method" : {
+                  "const" : "bank_transfer"
+                },
+                "type" : {
+                  "type" : "string"
+                }
+              },
+              "required" : [
+                "payment_method",
+                "type",
+                "iban",
+                "bic"
+              ],
+              "title" : "BankTransfer",
+              "type" : "object"
+            },
+            {
+              "properties" : {
+                "accountNumber" : {
+                  "type" : "string"
+                },
+                "bankLogoURL" : {
+                  "type" : "string"
+                },
+                "bankName" : {
+                  "type" : "string"
+                },
+                "id" : {
+                  "format" : "uuid",
+                  "type" : "string"
+                },
+                "maskedAccountNumber" : {
+                  "type" : "string"
+                },
+                "payment_method" : {
+                  "const" : "credit_card"
+                },
+                "spendPercentage" : {
+                  "type" : "integer"
+                }
+              },
+              "required" : [
+                "payment_method",
+                "id",
+                "accountNumber",
+                "bankName",
+                "spendPercentage",
+                "maskedAccountNumber"
+              ],
+              "title" : "CreditCard",
+              "type" : "object"
+            },
+            {
+              "properties" : {
+                "email" : {
+                  "description" : "PayPal account email address",
+                  "pattern" : "^[^@]+@[^@]+\\\\.[^@]+$",
+                  "type" : "string"
+                },
+                "payment_method" : {
+                  "const" : "paypal"
+                },
+                "type" : {
+                  "type" : "string"
+                }
+              },
+              "required" : [
+                "payment_method",
+                "type",
+                "email"
+              ],
+              "title" : "PayPal",
+              "type" : "object"
+            }
+          ],
+          "type" : "object"
+        },
+        "transactionId" : {
+          "type" : "string"
+        }
+      },
+      "required" : [
+        "transactionId",
+        "amount",
+        "paymentMethod",
+        "mapData"
+      ],
+      "type" : "object"
+    },
+    "status" : "APPROVED"
+  },
+  {
+    "associatedKeys" : [
+
+    ],
+    "metaData" : {
+      "description" : "Request payload for the offer widget"
+    },
+    "schemaDefinition" : {
+      "$anchor" : "Offer_Widget_Request",
+      "$schema" : "https:\/\/json-schema.org\/draft\/2020-12\/schema",
+      "properties" : {
+        "limit" : {
+          "description" : "Maximum number of offers to return",
+          "maximum" : 100,
+          "minimum" : 1,
+          "type" : "integer"
+        },
+        "offerTags" : {
+          "items" : {
+            "type" : "string"
+          },
+          "type" : "array"
+        },
+        "offerWidgetData" : {
+          "$anchor" : "Offer_Widget_Data",
+          "properties" : {
+            "logo_enabled" : {
+              "type" : "boolean"
+            },
+            "number_value" : {
+              "type" : "integer"
+            }
+          },
+          "required" : [
+            "number_value",
+            "logo_enabled"
+          ],
+          "type" : "object"
+        },
+        "radius" : {
+          "description" : "Search radius in kilometres",
+          "maximum" : 500,
+          "minimum" : 0,
+          "type" : "number"
+        }
+      },
+      "required" : [
+        "offerTags",
+        "offerWidgetData"
+      ],
+      "type" : "object"
+    },
+    "status" : "APPROVED"
+  },
+  {
+    "associatedKeys" : [
+
+    ],
+    "metaData" : {
+      "description" : ""
+    },
+    "schemaDefinition" : {
+      "$anchor" : "Offer_Widget_Data",
+      "$schema" : "https:\/\/json-schema.org\/draft\/2020-12\/schema",
+      "properties" : {
+        "logo_enabled" : {
+          "type" : "boolean"
+        },
+        "number_value" : {
+          "type" : "integer"
+        }
+      },
+      "required" : [
+        "number_value",
+        "logo_enabled"
+      ],
+      "type" : "object"
+    },
+    "status" : "APPROVED"
+  },
+  {
+    "associatedKeys" : [
+
+    ],
+    "metaData" : {
+      "description" : "Configuration for the search widget"
+    },
+    "schemaDefinition" : {
+      "$anchor" : "search_widget_config",
+      "$schema" : "https:\/\/json-schema.org\/draft\/2020-12\/schema",
+      "properties" : {
+        "category" : {
+          "type" : "string"
+        },
+        "maxResults" : {
+          "description" : "Maximum number of results to return",
+          "maximum" : 50,
+          "minimum" : 1,
+          "type" : "integer"
+        },
+        "query" : {
+          "description" : "Search query string",
+          "pattern" : "^.{1,256}$",
+          "type" : "string"
+        }
+      },
+      "required" : [
+        "query",
+        "maxResults"
+      ],
+      "type" : "object"
+    },
+    "status" : "APPROVED"
+  },
+  {
+    "associatedKeys" : [
+
+    ],
+    "metaData" : {
+      "description" : "Request payload for loading a store page"
+    },
+    "schemaDefinition" : {
+      "$anchor" : "Store_Page_Request",
+      "$schema" : "https:\/\/json-schema.org\/draft\/2020-12\/schema",
+      "properties" : {
+        "storeDetails" : {
+          "properties" : {
+            "address" : {
+              "properties" : {
+                "city" : {
+                  "type" : "string"
+                },
+                "coordinates" : {
+                  "properties" : {
+                    "latitude" : {
+                      "description" : "Latitude in decimal degrees",
+                      "maximum" : 90,
+                      "minimum" : -90,
+                      "type" : "number"
+                    },
+                    "longitude" : {
+                      "description" : "Longitude in decimal degrees",
+                      "maximum" : 180,
+                      "minimum" : -180,
+                      "type" : "number"
+                    }
+                  },
+                  "required" : [
+                    "latitude",
+                    "longitude"
+                  ],
+                  "type" : "object"
+                },
+                "pincode" : {
+                  "description" : "Postal code",
+                  "pattern" : "^[0-9]{6}$",
+                  "type" : "string"
+                }
+              },
+              "required" : [
+                "city",
+                "pincode",
+                "coordinates"
+              ],
+              "type" : "object"
+            },
+            "name" : {
+              "type" : "string"
+            }
+          },
+          "required" : [
+            "name",
+            "address"
+          ],
+          "type" : "object"
+        },
+        "storeId" : {
+          "description" : "Unique identifier for the store",
+          "type" : "string"
+        }
+      },
+      "required" : [
+        "storeId",
+        "storeDetails"
+      ],
+      "type" : "object"
+    },
+    "status" : "APPROVED"
+  },
+  {
+    "associatedKeys" : [
+
+    ],
+    "metaData" : {
+      "description" : "Test model demonstrating nested polymorphic types in various contexts"
+    },
+    "schemaDefinition" : {
+      "$anchor" : "nested_polymorphic_test",
+      "$schema" : "https:\/\/json-schema.org\/draft\/2020-12\/schema",
+      "properties" : {
+        "errorArray" : {
+          "description" : "Array of polymorphic elements",
+          "items" : {
+            "$anchor" : "testing",
+            "properties" : {
+              "oneOf" : [
+                {
+                  "properties" : {
+                    "action" : {
+                      "type" : "object"
+                    },
+                    "bottomCtas" : {
+                      "items" : {
+                        "type" : "object"
+                      },
+                      "type" : "array"
+                    },
+                    "ctas" : {
+                      "items" : {
+                        "type" : "object"
+                      },
+                      "type" : "array"
+                    },
+                    "ctaText" : {
+                      "type" : "string"
+                    },
+                    "imageId" : {
+                      "type" : "string"
+                    },
+                    "imageModel" : {
+                      "type" : "object"
+                    },
+                    "localizedCtaText" : {
+                      "type" : "object"
+                    },
+                    "localizedMessage" : {
+                      "items" : {
+                        "type" : "object"
+                      },
+                      "type" : "array"
+                    },
+                    "localizedTitle" : {
+                      "type" : "object"
+                    },
+                    "message" : {
+                      "items" : {
+                        "type" : "string"
+                      },
+                      "type" : "array"
+                    },
+                    "testkey" : {
+                      "const" : "OPEN_ERROR_SCREEN"
+                    },
+                    "title" : {
+                      "type" : "string"
+                    }
+                  },
+                  "required" : [
+                    "testkey"
+                  ],
+                  "title" : "ErrorModels",
+                  "type" : "object"
+                },
+                {
+                  "properties" : {
+                    "bottomCtas" : {
+                      "items" : {
+                        "type" : "object"
+                      },
+                      "type" : "array"
+                    },
+                    "ctas" : {
+                      "items" : {
+                        "type" : "object"
+                      },
+                      "type" : "array"
+                    },
+                    "ctaText" : {
+                      "type" : "string"
+                    },
+                    "description" : {
+                      "type" : "string"
+                    },
+                    "imageModel" : {
+                      "type" : "object"
+                    },
+                    "imageUrl" : {
+                      "type" : "string"
+                    },
+                    "localizedCtaText" : {
+                      "type" : "object"
+                    },
+                    "localizedDescription" : {
+                      "type" : "object"
+                    },
+                    "localizedTitle" : {
+                      "type" : "object"
+                    },
+                    "testkey" : {
+                      "const" : "OPEN_BOTTOM_SHEET"
+                    },
+                    "title" : {
+                      "type" : "string"
+                    }
+                  },
+                  "required" : [
+                    "testkey"
+                  ],
+                  "title" : "BottomSheetModel",
+                  "type" : "object"
+                }
+              ]
+            },
+            "type" : "object"
+          },
+          "type" : "array"
+        },
+        "errorMap" : {
+          "additionalProperties" : {
+            "$anchor" : "testing",
+            "properties" : {
+              "oneOf" : [
+                {
+                  "properties" : {
+                    "action" : {
+                      "type" : "object"
+                    },
+                    "bottomCtas" : {
+                      "items" : {
+                        "type" : "object"
+                      },
+                      "type" : "array"
+                    },
+                    "ctas" : {
+                      "items" : {
+                        "type" : "object"
+                      },
+                      "type" : "array"
+                    },
+                    "ctaText" : {
+                      "type" : "string"
+                    },
+                    "imageId" : {
+                      "type" : "string"
+                    },
+                    "imageModel" : {
+                      "type" : "object"
+                    },
+                    "localizedCtaText" : {
+                      "type" : "object"
+                    },
+                    "localizedMessage" : {
+                      "items" : {
+                        "type" : "object"
+                      },
+                      "type" : "array"
+                    },
+                    "localizedTitle" : {
+                      "type" : "object"
+                    },
+                    "message" : {
+                      "items" : {
+                        "type" : "string"
+                      },
+                      "type" : "array"
+                    },
+                    "testkey" : {
+                      "const" : "OPEN_ERROR_SCREEN"
+                    },
+                    "title" : {
+                      "type" : "string"
+                    }
+                  },
+                  "required" : [
+                    "testkey"
+                  ],
+                  "title" : "ErrorModels",
+                  "type" : "object"
+                },
+                {
+                  "properties" : {
+                    "bottomCtas" : {
+                      "items" : {
+                        "type" : "object"
+                      },
+                      "type" : "array"
+                    },
+                    "ctas" : {
+                      "items" : {
+                        "type" : "object"
+                      },
+                      "type" : "array"
+                    },
+                    "ctaText" : {
+                      "type" : "string"
+                    },
+                    "description" : {
+                      "type" : "string"
+                    },
+                    "imageModel" : {
+                      "type" : "object"
+                    },
+                    "imageUrl" : {
+                      "type" : "string"
+                    },
+                    "localizedCtaText" : {
+                      "type" : "object"
+                    },
+                    "localizedDescription" : {
+                      "type" : "object"
+                    },
+                    "localizedTitle" : {
+                      "type" : "object"
+                    },
+                    "testkey" : {
+                      "const" : "OPEN_BOTTOM_SHEET"
+                    },
+                    "title" : {
+                      "type" : "string"
+                    }
+                  },
+                  "required" : [
+                    "testkey"
+                  ],
+                  "title" : "BottomSheetModel",
+                  "type" : "object"
+                }
+              ]
+            },
+            "type" : "object"
+          },
+          "description" : "Dictionary with polymorphic values",
+          "type" : "object"
+        },
+        "singleError" : {
+          "$anchor" : "testing",
+          "description" : "Single optional polymorphic property",
+          "properties" : {
+            "oneOf" : [
+              {
+                "properties" : {
+                  "action" : {
+                    "type" : "object"
+                  },
+                  "bottomCtas" : {
+                    "items" : {
+                      "type" : "object"
+                    },
+                    "type" : "array"
+                  },
+                  "ctas" : {
+                    "items" : {
+                      "type" : "object"
+                    },
+                    "type" : "array"
+                  },
+                  "ctaText" : {
+                    "type" : "string"
+                  },
+                  "imageId" : {
+                    "type" : "string"
+                  },
+                  "imageModel" : {
+                    "type" : "object"
+                  },
+                  "localizedCtaText" : {
+                    "type" : "object"
+                  },
+                  "localizedMessage" : {
+                    "items" : {
+                      "type" : "object"
+                    },
+                    "type" : "array"
+                  },
+                  "localizedTitle" : {
+                    "type" : "object"
+                  },
+                  "message" : {
+                    "items" : {
+                      "type" : "string"
+                    },
+                    "type" : "array"
+                  },
+                  "testkey" : {
+                    "const" : "OPEN_ERROR_SCREEN"
+                  },
+                  "title" : {
+                    "type" : "string"
+                  }
+                },
+                "required" : [
+                  "testkey"
+                ],
+                "title" : "ErrorModels",
+                "type" : "object"
+              },
+              {
+                "properties" : {
+                  "bottomCtas" : {
+                    "items" : {
+                      "type" : "object"
+                    },
+                    "type" : "array"
+                  },
+                  "ctas" : {
+                    "items" : {
+                      "type" : "object"
+                    },
+                    "type" : "array"
+                  },
+                  "ctaText" : {
+                    "type" : "string"
+                  },
+                  "description" : {
+                    "type" : "string"
+                  },
+                  "imageModel" : {
+                    "type" : "object"
+                  },
+                  "imageUrl" : {
+                    "type" : "string"
+                  },
+                  "localizedCtaText" : {
+                    "type" : "object"
+                  },
+                  "localizedDescription" : {
+                    "type" : "object"
+                  },
+                  "localizedTitle" : {
+                    "type" : "object"
+                  },
+                  "testkey" : {
+                    "const" : "OPEN_BOTTOM_SHEET"
+                  },
+                  "title" : {
+                    "type" : "string"
+                  }
+                },
+                "required" : [
+                  "testkey"
+                ],
+                "title" : "BottomSheetModel",
+                "type" : "object"
+              }
+            ]
+          },
+          "type" : "object"
+        }
+      },
+      "required" : [
+        "errorMap",
+        "errorArray"
+      ],
+      "type" : "object"
+    },
+    "status" : "APPROVED"
+  },
+  {
+    "associatedKeys" : [
+
+    ],
+    "metaData" : {
+      "description" : "Schema for selecting a delivery method at checkout"
+    },
+    "schemaDefinition" : {
+      "$anchor" : "delivery_method_schema",
+      "$schema" : "https:\/\/json-schema.org\/draft\/2020-12\/schema",
+      "properties" : {
+        "model" : {
+          "oneOf" : [
+            {
+              "properties" : {
+                "estimatedDays" : {
+                  "description" : "Estimated number of business days for delivery",
+                  "maximum" : 14,
+                  "minimum" : 1,
+                  "type" : "integer"
+                },
+                "type" : {
+                  "const" : "standard"
+                }
+              },
+              "required" : [
+                "type",
+                "estimatedDays"
+              ],
+              "title" : "StandardDelivery",
+              "type" : "object"
+            },
+            {
+              "properties" : {
+                "estimatedDays" : {
+                  "description" : "Estimated number of business days for express delivery",
+                  "maximum" : 3,
+                  "minimum" : 1,
+                  "type" : "integer"
+                },
+                "priority" : {
+                  "description" : "Priority level for express shipment",
+                  "pattern" : "^(high|medium|low)$",
+                  "type" : "string"
+                },
+                "type" : {
+                  "const" : "express"
+                }
+              },
+              "required" : [
+                "type",
+                "estimatedDays",
+                "priority"
+              ],
+              "title" : "ExpressDelivery",
+              "type" : "object"
+            }
+          ],
+          "type" : "object"
+        }
+      },
+      "required" : [
+        "model"
+      ],
+      "type" : "object"
+    },
+    "status" : "APPROVED"
+  },
+  {
+    "associatedKeys" : [
+
+    ],
+    "metaData" : {
+      "description" : ""
+    },
+    "schemaDefinition" : {
+      "$anchor" : "testing",
+      "$schema" : "https:\/\/json-schema.org\/draft\/2020-12\/schema",
+      "properties" : {
+        "oneOf" : [
+          {
+            "properties" : {
+              "action" : {
+                "type" : "object"
+              },
+              "bottomCtas" : {
+                "items" : {
+                  "type" : "object"
+                },
+                "type" : "array"
+              },
+              "ctas" : {
+                "items" : {
+                  "type" : "object"
+                },
+                "type" : "array"
+              },
+              "ctaText" : {
+                "type" : "string"
+              },
+              "imageId" : {
+                "type" : "string"
+              },
+              "imageModel" : {
+                "type" : "object"
+              },
+              "localizedCtaText" : {
+                "type" : "object"
+              },
+              "localizedMessage" : {
+                "items" : {
+                  "type" : "object"
+                },
+                "type" : "array"
+              },
+              "localizedTitle" : {
+                "type" : "object"
+              },
+              "message" : {
+                "items" : {
+                  "type" : "string"
+                },
+                "type" : "array"
+              },
+              "testkey" : {
+                "const" : "OPEN_ERROR_SCREEN"
+              },
+              "title" : {
+                "type" : "string"
+              }
+            },
+            "required" : [
+              "testkey"
+            ],
+            "title" : "ErrorModels",
+            "type" : "object"
+          },
+          {
+            "properties" : {
+              "bottomCtas" : {
+                "items" : {
+                  "type" : "object"
+                },
+                "type" : "array"
+              },
+              "ctas" : {
+                "items" : {
+                  "type" : "object"
+                },
+                "type" : "array"
+              },
+              "ctaText" : {
+                "type" : "string"
+              },
+              "description" : {
+                "type" : "string"
+              },
+              "imageModel" : {
+                "type" : "object"
+              },
+              "imageUrl" : {
+                "type" : "string"
+              },
+              "localizedCtaText" : {
+                "type" : "object"
+              },
+              "localizedDescription" : {
+                "type" : "object"
+              },
+              "localizedTitle" : {
+                "type" : "object"
+              },
+              "testkey" : {
+                "const" : "OPEN_BOTTOM_SHEET"
+              },
+              "title" : {
+                "type" : "string"
+              }
+            },
+            "required" : [
+              "testkey"
+            ],
+            "title" : "BottomSheetModel",
+            "type" : "object"
+          }
+        ]
+      },
+      "type" : "object"
+    },
+    "status" : "APPROVED"
+  }
+]

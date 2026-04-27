@@ -1,0 +1,1534 @@
+/**
+ * Custom CSS for ModelGraphGenerator Documentation
+ * Apple Developer Documentation "Liquid Glass" inspired design
+ */
+
+/* ================================================
+   LIGHT MODE — Apple Liquid Glass Design
+   ================================================ */
+:root {
+  /* Apple Blue Accent Color */
+  --ifm-color-primary: #0066cc;
+  --ifm-color-primary-dark: #005bb3;
+  --ifm-color-primary-darker: #0055a6;
+  --ifm-color-primary-darkest: #004589;
+  --ifm-color-primary-light: #0077e6;
+  --ifm-color-primary-lighter: #007df2;
+  --ifm-color-primary-lightest: #1a8cff;
+
+  /* Apple System Fonts (San Francisco style) */
+  --ifm-font-family-base: -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;
+  --ifm-heading-font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;
+  --ifm-font-family-monospace: 'SF Mono', 'Monaco', 'Menlo', 'Courier New', monospace;
+
+  /* Apple Background Colors */
+  --ifm-background-color: #f5f5f7;
+  --ifm-background-surface-color: #ffffff;
+  
+  /* Navbar Glass Effect */
+  --ifm-navbar-background-color: rgba(255, 255, 255, 0.72);
+  --ifm-navbar-height: 48px;
+  --ifm-navbar-shadow: none;
+  
+  /* Sidebar Colors */
+  --ifm-sidebar-background: rgba(247, 247, 247, 0.8);
+  --ifm-menu-color: #1d1d1f;
+  --ifm-menu-color-active: #0066cc;
+  
+  /* Typography */
+  --ifm-heading-color: #1d1d1f;
+  --ifm-font-color-base: #1d1d1f;
+  --ifm-font-color-secondary: #515154;
+  --ifm-link-color: #0066cc;
+  --ifm-link-hover-color: #0077e6;
+  
+  /* Code Styling */
+  --ifm-code-font-size: 0.875em;
+  --ifm-code-background: #f5f5f7;
+  --ifm-code-border-radius: 6px;
+  --ifm-code-padding-horizontal: 0.4em;
+  --ifm-code-padding-vertical: 0.2em;
+  --ifm-pre-background: #f5f5f7;
+  --ifm-pre-border-radius: 12px;
+  
+  /* Borders */
+  --ifm-color-emphasis-200: #e5e5e7;
+  --ifm-color-emphasis-300: #d2d2d7;
+  --ifm-hr-border-color: #d2d2d7;
+  
+  /* Other */
+  --docusaurus-highlighted-code-line-bg: rgba(0, 102, 204, 0.08);
+  --ifm-breadcrumb-separator: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="8" height="12" viewBox="0 0 8 12"><path fill="%23999" d="M1.5 0L0 1.5 4.5 6 0 10.5 1.5 12l6-6z"/></svg>');
+  
+  /* Homepage variables (preserved) */
+  --smg-hero-bg: linear-gradient(135deg, #0066cc 0%, #004899 100%);
+  --smg-hero-text: #ffffff;
+  --smg-feature-icon-size: 2.5rem;
+}
+
+/* ================================================
+   DARK MODE — Apple Liquid Glass Dark
+   ================================================ */
+[data-theme='dark'] {
+  /* Apple Blue Accent (lighter for dark mode) */
+  --ifm-color-primary: #0a84ff;
+  --ifm-color-primary-dark: #0077e6;
+  --ifm-color-primary-darker: #006fd9;
+  --ifm-color-primary-darkest: #005bb3;
+  --ifm-color-primary-light: #3a96ff;
+  --ifm-color-primary-lighter: #4d9fff;
+  --ifm-color-primary-lightest: #73b3ff;
+
+  /* Dark Glass Backgrounds */
+  --ifm-background-color: #000000;
+  --ifm-background-surface-color: #1c1c1e;
+  
+  /* Navbar Dark Glass */
+  --ifm-navbar-background-color: rgba(28, 28, 30, 0.72);
+  
+  /* Sidebar Dark Glass */
+  --ifm-sidebar-background: rgba(28, 28, 30, 0.8);
+  --ifm-menu-color: #f5f5f7;
+  --ifm-menu-color-active: #0a84ff;
+  --ifm-menu-color-background-active: rgba(10, 132, 255, 0.15);
+  --ifm-menu-color-background-hover: rgba(255, 255, 255, 0.05);
+  
+  /* Dark Mode Typography */
+  --ifm-heading-color: #f5f5f7;
+  --ifm-font-color-base: #f5f5f7;
+  --ifm-font-color-secondary: #98989d;
+  --ifm-link-color: #0a84ff;
+  --ifm-link-hover-color: #3a96ff;
+  
+  /* Code Dark Mode */
+  --ifm-code-background: rgba(255, 255, 255, 0.08);
+  --ifm-pre-background: #1c1c1e;
+  
+  /* Borders Dark Mode */
+  --ifm-color-emphasis-200: #2c2c2e;
+  --ifm-color-emphasis-300: #3a3a3c;
+  --ifm-hr-border-color: #2c2c2e;
+  --ifm-table-stripe-background: rgba(255, 255, 255, 0.02);
+  
+  /* Other Dark Mode */
+  --docusaurus-highlighted-code-line-bg: rgba(10, 132, 255, 0.12);
+  --ifm-breadcrumb-separator: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="8" height="12" viewBox="0 0 8 12"><path fill="%23666" d="M1.5 0L0 1.5 4.5 6 0 10.5 1.5 12l6-6z"/></svg>');
+  
+  /* Homepage Dark (preserved) */
+  --smg-hero-bg: #000000;
+  --smg-hero-text: #ffffff;
+}
+
+/* ================================================
+   GLASS EFFECT — Navbar & Sidebar
+   ================================================ */
+
+/* Navbar Glass Effect */
+.navbar {
+  backdrop-filter: saturate(180%) blur(20px);
+  -webkit-backdrop-filter: saturate(180%) blur(20px);
+  background: var(--ifm-navbar-background-color) !important;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+  height: var(--ifm-navbar-height);
+  box-shadow: none;
+  transition: background 0.3s ease, border 0.3s ease;
+}
+
+[data-theme='dark'] .navbar {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+/* Make navbar items vertically centered */
+.navbar__inner {
+  height: var(--ifm-navbar-height);
+  max-width: 100%;
+  padding: 0 1.5rem;
+}
+
+.navbar__items {
+  height: 100%;
+}
+
+.navbar__brand {
+  height: 100%;
+  margin-right: 2rem;
+}
+
+.navbar__logo {
+  height: 24px;
+  margin-right: 0.5rem;
+}
+
+.navbar__title {
+  font-size: 1rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+.navbar__item {
+  font-size: 0.875rem;
+  font-weight: 500;
+  padding: 0 0.75rem;
+}
+
+.navbar__link {
+  border-radius: 6px;
+  padding: 0.375rem 0.75rem;
+  transition: background 0.2s ease;
+}
+
+.navbar__link:hover,
+.navbar__link--active {
+  background: rgba(0, 0, 0, 0.04);
+}
+
+[data-theme='dark'] .navbar__link:hover,
+[data-theme='dark'] .navbar__link--active {
+  background: rgba(255, 255, 255, 0.08);
+}
+
+/* Sidebar Glass Effect */
+.theme-doc-sidebar-container {
+  background: var(--ifm-sidebar-background) !important;
+  backdrop-filter: saturate(180%) blur(20px);
+  -webkit-backdrop-filter: saturate(180%) blur(20px);
+  border-right: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+[data-theme='dark'] .theme-doc-sidebar-container {
+  border-right: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+/* Make sidebar extend to top (behind navbar) */
+.theme-doc-sidebar-container {
+  position: sticky !important;
+  top: 0 !important;
+  height: 100vh !important;
+  padding-top: var(--ifm-navbar-height);
+}
+
+/* Sidebar menu styling */
+.menu {
+  padding: 1rem 0.75rem;
+  font-size: 0.875rem;
+}
+
+.menu__link {
+  border-radius: 6px;
+  padding: 0.375rem 0.75rem;
+  font-weight: 400;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+.menu__link:hover {
+  background: var(--ifm-menu-color-background-hover);
+}
+
+.menu__link--active {
+  background: var(--ifm-menu-color-background-active);
+  color: var(--ifm-menu-color-active);
+  font-weight: 500;
+}
+
+.menu__list-item-collapsible {
+  border-radius: 6px;
+}
+
+.menu__caret {
+  padding: 0.375rem;
+}
+
+/* ================================================
+   BREADCRUMBS — Sub-header Bar
+   ================================================ */
+
+/* Create breadcrumb container with border */
+.theme-doc-breadcrumbs {
+  background: rgba(255, 255, 255, 0.5);
+  backdrop-filter: saturate(180%) blur(10px);
+  -webkit-backdrop-filter: saturate(180%) blur(10px);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+  padding: 0.75rem 0;
+  margin: 0 0 2rem 0;
+  position: sticky;
+  top: var(--ifm-navbar-height);
+  z-index: 10;
+}
+
+[data-theme='dark'] .theme-doc-breadcrumbs {
+  background: rgba(28, 28, 30, 0.5);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.breadcrumbs {
+  margin: 0;
+  padding: 0 1.5rem;
+  font-size: 0.8125rem;
+}
+
+.breadcrumbs__item {
+  color: var(--ifm-font-color-secondary);
+}
+
+.breadcrumbs__link {
+  color: var(--ifm-link-color);
+  text-decoration: none;
+  border-radius: 4px;
+  padding: 0.125rem 0.375rem;
+  transition: background 0.2s ease;
+}
+
+.breadcrumbs__link:hover {
+  background: rgba(0, 0, 0, 0.04);
+  text-decoration: none;
+}
+
+[data-theme='dark'] .breadcrumbs__link:hover {
+  background: rgba(255, 255, 255, 0.06);
+}
+
+/* ================================================
+   MAIN CONTENT AREA
+   ================================================ */
+
+/* Main article container - max width 980px centered */
+.theme-doc-markdown,
+article {
+  max-width: 980px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+.container {
+  max-width: 100%;
+}
+
+/* Remove default padding from main wrapper */
+.main-wrapper {
+  background: var(--ifm-background-color);
+}
+
+/* Doc page layout */
+.docMainContainer {
+  background: var(--ifm-background-color);
+}
+
+/* ================================================
+   TYPOGRAPHY — Apple Style
+   ================================================ */
+
+/* Headers - bold with tight letter spacing */
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--ifm-heading-color);
+}
+
+h1 {
+  font-size: 2.5rem;
+  line-height: 1.1;
+  margin-bottom: 1.5rem;
+}
+
+h2 {
+  font-size: 2rem;
+  line-height: 1.2;
+  margin-top: 3rem;
+  margin-bottom: 1rem;
+}
+
+h3 {
+  font-size: 1.5rem;
+  line-height: 1.3;
+  margin-top: 2rem;
+  margin-bottom: 0.75rem;
+}
+
+h4 {
+  font-size: 1.25rem;
+  line-height: 1.4;
+}
+
+/* Paragraph spacing */
+p {
+  line-height: 1.6;
+  margin-bottom: 1rem;
+}
+
+/* Links */
+a {
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* Inline code - subtle gray background with rounded corners */
+code {
+  background: var(--ifm-code-background);
+  border: 1px solid var(--ifm-color-emphasis-200);
+  border-radius: var(--ifm-code-border-radius);
+  padding: var(--ifm-code-padding-vertical) var(--ifm-code-padding-horizontal);
+  font-size: var(--ifm-code-font-size);
+  font-weight: 500;
+}
+
+/* Code blocks */
+pre {
+  background: var(--ifm-pre-background);
+  border: 1px solid var(--ifm-color-emphasis-200);
+  border-radius: var(--ifm-pre-border-radius);
+  padding: 1.5rem;
+  margin: 1.5rem 0;
+  overflow-x: auto;
+}
+
+pre code {
+  background: transparent;
+  border: none;
+  padding: 0;
+  font-size: 0.875rem;
+  font-weight: 400;
+}
+
+/* ================================================
+   TABLES — Apple Style
+   ================================================ */
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+  margin: 1.5rem 0;
+  font-size: 0.9375rem;
+}
+
+table thead tr {
+  border-bottom: 2px solid var(--ifm-color-emphasis-300);
+}
+
+table th {
+  font-weight: 600;
+  text-align: left;
+  padding: 0.75rem 1rem;
+  color: var(--ifm-heading-color);
+}
+
+table td {
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid var(--ifm-color-emphasis-200);
+}
+
+table tr:last-child td {
+  border-bottom: none;
+}
+
+/* ================================================
+   ADMONITIONS — Apple Style
+   ================================================ */
+
+.admonition {
+  border-radius: 12px;
+  border: 1px solid var(--ifm-color-emphasis-200);
+  margin: 1.5rem 0;
+  padding: 1rem 1.25rem;
+}
+
+.admonition-heading {
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+}
+
+.admonition-icon {
+  margin-right: 0.5rem;
+}
+
+/* ================================================
+   TOC (Table of Contents)
+   ================================================ */
+
+.table-of-contents {
+  font-size: 0.8125rem;
+}
+
+.table-of-contents__link {
+  color: var(--ifm-font-color-secondary);
+  padding: 0.25rem 0;
+  display: block;
+  transition: color 0.2s ease;
+}
+
+.table-of-contents__link:hover,
+.table-of-contents__link--active {
+  color: var(--ifm-link-color);
+  text-decoration: none;
+}
+
+.table-of-contents__link--active {
+  font-weight: 500;
+}
+
+/* ================================================
+   PAGINATION
+   ================================================ */
+
+.pagination-nav {
+  margin-top: 3rem;
+  padding-top: 2rem;
+  border-top: 1px solid var(--ifm-hr-border-color);
+}
+
+.pagination-nav__link {
+  border: 1px solid var(--ifm-color-emphasis-200);
+  border-radius: 12px;
+  padding: 1.25rem 1.5rem;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.pagination-nav__link:hover {
+  border-color: var(--ifm-link-color);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  text-decoration: none;
+}
+
+[data-theme='dark'] .pagination-nav__link:hover {
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+.pagination-nav__sublabel {
+  font-size: 0.8125rem;
+  color: var(--ifm-font-color-secondary);
+  font-weight: 500;
+}
+
+.pagination-nav__label {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--ifm-heading-color);
+}
+
+/* ================================================
+   HOMEPAGE HERO (Preserved)
+   ================================================ */
+
+.hero--primary {
+  background: var(--smg-hero-bg);
+  color: var(--smg-hero-text);
+}
+
+[data-theme='dark'] .hero--primary {
+  background: #000000;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.hero__title {
+  font-size: 3rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+}
+
+.hero__subtitle {
+  font-size: 1.25rem;
+  opacity: 0.9;
+  max-width: 540px;
+  margin: 0 auto 2rem;
+}
+
+/* ================================================
+   FEATURES SECTION
+   ================================================ */
+
+.features {
+  padding: 4rem 0;
+}
+
+.featureSvg {
+  width: var(--smg-feature-icon-size);
+  height: var(--smg-feature-icon-size);
+  margin-bottom: 1rem;
+}
+
+.feature__title {
+  font-size: 1.1rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  color: #ffffff;
+}
+
+/* ================================================
+   CODE BLOCKS
+   ================================================ */
+
+/* Make Swift code blocks slightly wider */
+.language-swift .token.annotation {
+  color: #e35b00;
+  font-style: italic;
+}
+
+[data-theme='dark'] .language-swift .token.annotation {
+  color: #ffaa66;
+}
+
+/* ================================================
+   QUICK EXAMPLE SECTION (homepage)
+   ================================================ */
+
+.quick-example {
+  background: #000000;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  padding: 5.5rem 0;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Subtle radial glow in the center */
+.quick-example::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse 65% 90% at 50% 50%, rgba(255, 255, 255, 0.03) 0%, transparent 70%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.quick-example .container {
+  position: relative;
+  z-index: 1;
+}
+
+.quick-example__title {
+  text-align: center;
+  font-size: clamp(1.5rem, 3vw, 2.1rem);
+  font-weight: 800;
+  letter-spacing: -0.025em;
+  margin-bottom: 0.5rem;
+  color: #ffffff;
+}
+
+.quick-example__subtitle {
+  text-align: center;
+  color: rgba(255, 255, 255, 0.42);
+  margin-bottom: 2.5rem;
+  font-size: 1rem;
+}
+
+.quick-example__grid {
+  display: grid;
+  grid-template-columns: 1fr 60px 1fr;
+  gap: 1.25rem;
+  align-items: center;
+}
+
+.quick-example__arrow {
+  text-align: center;
+  font-size: 2rem;
+  font-weight: 700;
+  background: linear-gradient(135deg, #ffffff, #cccccc);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+@media (max-width: 768px) {
+  .quick-example__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .quick-example__arrow {
+    transform: rotate(90deg);
+  }
+
+  .hero__title {
+    font-size: 2rem;
+  }
+}
+
+/* ================================================
+   NAVBAR
+   ================================================ */
+
+.navbar__brand {
+  font-weight: 800;
+  font-size: 1.1rem;
+}
+
+/* ================================================
+   FOOTER
+   ================================================ */
+
+.footer--dark {
+  background: rgba(3, 3, 12, 0.85);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+/* ================================================
+   DARK GLOBAL OVERRIDES
+   ================================================ */
+
+/* Navbar — transparent glass */
+[data-theme='dark'] .navbar {
+  background-color: rgba(5, 5, 16, 0.3) !important;
+  backdrop-filter: blur(20px) saturate(150%);
+  -webkit-backdrop-filter: blur(20px) saturate(150%);
+  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.05);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+/* Sidebar background */
+[data-theme='dark'] .theme-doc-sidebar-container {
+  background: rgba(5, 5, 20, 0.7);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-right: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+/* Doc article */
+[data-theme='dark'] .docMainWrapper,
+[data-theme='dark'] article {
+  background: transparent !important;
+}
+
+/* Main wrapper - ensure it doesn't block gradient */
+[data-theme='dark'] .main-wrapper {
+  background: transparent !important;
+}
+
+/* Global solid background - no gradient */
+[data-theme='dark'] body {
+  background-color: #000000 !important;
+}
+
+/* Table of contents */
+[data-theme='dark'] .table-of-contents {
+  border-left-color: rgba(255, 255, 255, 0.08);
+}
+
+/* Admonitions */
+[data-theme='dark'] .alert {
+  background: rgba(255, 255, 255, 0.03);
+  border-color: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+/* Pagination */
+[data-theme='dark'] .pagination-nav__link {
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(20px);
+  border-color: rgba(255, 255, 255, 0.07);
+  border-radius: 14px;
+}
+
+[data-theme='dark'] .pagination-nav__link:hover {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.3);
+}
+
+/* Breadcrumbs */
+[data-theme='dark'] .breadcrumbs__link:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+/* Search */
+[data-theme='dark'] .navbar__search-input {
+  background: rgba(20, 20, 20, 0.6) !important;
+  color: #e8e8e8;
+  border: 1px solid rgba(255, 255, 255, 0.2) !important;
+}
+
+/* Dropdown menus */
+[data-theme='dark'] .dropdown__menu {
+  background: rgba(8, 8, 25, 0.85);
+  backdrop-filter: blur(30px) saturate(180%);
+  -webkit-backdrop-filter: blur(30px) saturate(180%);
+  border: 1px solid rgba(255, 255, 255, 0.09);
+  border-radius: 14px;
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.5);
+}
+
+/* Tags */
+[data-theme='dark'] .tag {
+  background: rgba(255, 255, 255, 0.12) !important;
+  border-color: rgba(255, 255, 255, 0.2) !important;
+}
+
+/* ================================================
+   BADGES (in README sections)
+   ================================================ */
+
+.badge-row {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  margin-bottom: 1rem;
+}
+
+/* ================================================
+   DOCS — SIDEBAR
+   ================================================ */
+
+/* Sidebar root */
+[data-theme='dark'] .theme-doc-sidebar-menu {
+  padding: 0.75rem 0;
+}
+
+/* Category labels */
+[data-theme='dark'] .menu__list-item-collapsible .menu__link {
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.32);
+  padding: 0.55rem 1rem 0.3rem;
+}
+
+/* Nav items */
+[data-theme='dark'] .menu__link {
+  border-radius: 8px;
+  font-size: 0.875rem;
+  transition: background 0.18s ease, color 0.18s ease;
+  color: rgba(255, 255, 255, 0.55);
+  padding: 0.44rem 0.9rem;
+}
+
+[data-theme='dark'] .menu__link:hover {
+  background: rgba(255, 255, 255, 0.07);
+  color: rgba(255, 255, 255, 0.85);
+}
+
+/* Active item — spatial tinted bg */
+[data-theme='dark'] .menu__link--active {
+  background: rgba(255, 255, 255, 0.12);
+  color: #ffffff !important;
+  font-weight: 600;
+  box-shadow: inset 3px 0 0 0 #ffffff;
+}
+
+[data-theme='dark'] .menu__link--active:hover {
+  background: rgba(255, 255, 255, 0.17);
+}
+
+/* Sidebar toggle button */
+[data-theme='dark'] .theme-doc-sidebar-container button {
+  border-color: rgba(255, 255, 255, 0.08);
+}
+
+/* ================================================
+   DOCS — ARTICLE CONTENT
+   ================================================ */
+
+/* Article wrapper */
+[data-theme='dark'] .theme-doc-markdown {
+  color: rgba(255, 255, 255, 0.75);
+  font-size: 0.975rem;
+  line-height: 1.78;
+}
+
+/* Headings */
+[data-theme='dark'] .theme-doc-markdown h1 {
+  font-size: clamp(1.75rem, 3.5vw, 2.4rem);
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  color: #ffffff;
+  padding-bottom: 0.6rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+  margin-bottom: 1.5rem;
+}
+
+[data-theme='dark'] .theme-doc-markdown h2 {
+  font-size: 1.35rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: #f0f0f0;
+  padding-bottom: 0.4rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  margin-top: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+[data-theme='dark'] .theme-doc-markdown h3 {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: #e0e0e0;
+  margin-top: 2rem;
+  margin-bottom: 0.6rem;
+}
+
+[data-theme='dark'] .theme-doc-markdown h4,
+[data-theme='dark'] .theme-doc-markdown h5,
+[data-theme='dark'] .theme-doc-markdown h6 {
+  color: rgba(255, 255, 255, 0.75);
+  margin-top: 1.5rem;
+}
+
+/* Anchor links on headings */
+[data-theme='dark'] .theme-doc-markdown .hash-link {
+  color: rgba(59, 158, 255, 0.4);
+}
+
+[data-theme='dark'] .theme-doc-markdown .hash-link:hover {
+  color: #3b9eff;
+}
+
+/* Paragraphs */
+[data-theme='dark'] .theme-doc-markdown p {
+  color: rgba(255, 255, 255, 0.65);
+}
+
+/* Links inside docs */
+[data-theme='dark'] .theme-doc-markdown a:not(.hash-link) {
+  color: #cccccc;
+  text-decoration: none;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.25);
+  transition: border-color 0.18s, color 0.18s;
+}
+
+[data-theme='dark'] .theme-doc-markdown a:not(.hash-link):hover {
+  color: #ffffff;
+  border-bottom-color: rgba(255, 255, 255, 0.5);
+}
+
+/* Inline code */
+[data-theme='dark'] .theme-doc-markdown code {
+  background: rgba(255, 255, 255, 0.09);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  color: #e0e0e0;
+  border-radius: 5px;
+  padding: 0.12em 0.45em;
+  font-size: 0.85em;
+}
+
+/* Code blocks */
+[data-theme='dark'] .theme-doc-markdown pre {
+  background: rgba(5, 5, 5, 0.75) !important;
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 14px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(255, 255, 255, 0.06) inset;
+  padding: 1.25rem 1.4rem;
+}
+
+/* Tables */
+[data-theme='dark'] .theme-doc-markdown table {
+  border-collapse: collapse;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  font-size: 0.88rem;
+  width: 100%;
+}
+
+[data-theme='dark'] .theme-doc-markdown table thead tr {
+  background: rgba(255, 255, 255, 0.08);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.18);
+}
+
+[data-theme='dark'] .theme-doc-markdown table thead th {
+  color: #e0e0e0;
+  font-weight: 700;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  padding: 0.75rem 1rem;
+}
+
+[data-theme='dark'] .theme-doc-markdown table tbody tr {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  transition: background 0.15s ease;
+}
+
+[data-theme='dark'] .theme-doc-markdown table tbody tr:hover {
+  background: rgba(255, 255, 255, 0.05);
+}
+
+[data-theme='dark'] .theme-doc-markdown table tbody td {
+  padding: 0.7rem 1rem;
+  color: rgba(255, 255, 255, 0.62);
+}
+
+/* Blockquotes */
+[data-theme='dark'] .theme-doc-markdown blockquote {
+  background: rgba(255, 255, 255, 0.05);
+  border-left: 3px solid #ffffff;
+  border-radius: 0 8px 8px 0;
+  padding: 0.75rem 1.25rem;
+  color: rgba(255, 255, 255, 0.55);
+  font-style: italic;
+  margin: 1.5rem 0;
+}
+
+[data-theme='dark'] .theme-doc-markdown blockquote p {
+  margin: 0;
+  color: rgba(255, 255, 255, 0.55);
+}
+
+/* Horizontal rule */
+[data-theme='dark'] .theme-doc-markdown hr {
+  border: none;
+  border-top: 1px solid rgba(255, 255, 255, 0.07);
+  margin: 2.5rem 0;
+}
+
+/* Lists */
+[data-theme='dark'] .theme-doc-markdown ul li::marker,
+[data-theme='dark'] .theme-doc-markdown ol li::marker {
+  color: #ffffff;
+}
+
+/* ================================================
+   DOCS — ADMONITIONS (note, tip, info, warning, danger)
+   ================================================ */
+
+[data-theme='dark'] .alert--info {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-left: 3px solid #ffffff;
+  border-radius: 10px;
+}
+
+[data-theme='dark'] .alert--success {
+  background: rgba(34, 197, 94, 0.05);
+  border: 1px solid rgba(34, 197, 94, 0.15);
+  border-left: 3px solid #22c55e;
+  border-radius: 10px;
+}
+
+[data-theme='dark'] .alert--warning {
+  background: rgba(234, 179, 8, 0.05);
+  border: 1px solid rgba(234, 179, 8, 0.15);
+  border-left: 3px solid #eab308;
+  border-radius: 10px;
+}
+
+[data-theme='dark'] .alert--danger {
+  background: rgba(239, 68, 68, 0.05);
+  border: 1px solid rgba(239, 68, 68, 0.15);
+  border-left: 3px solid #ef4444;
+  border-radius: 10px;
+}
+
+[data-theme='dark'] .alert--secondary {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.09);
+  border-left: 3px solid rgba(255, 255, 255, 0.25);
+  border-radius: 10px;
+}
+
+/* Admonition title / icon */
+[data-theme='dark'] .admonitionHeading_Gvgb {
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+}
+
+/* ================================================
+   DOCS — TABLE OF CONTENTS (right rail)
+   ================================================ */
+
+[data-theme='dark'] .table-of-contents__link {
+  font-size: 0.82rem;
+  color: rgba(255, 255, 255, 0.38);
+  transition: color 0.18s ease;
+  line-height: 1.6;
+}
+
+[data-theme='dark'] .table-of-contents__link:hover {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+[data-theme='dark'] .table-of-contents__link--active {
+  color: #ffffff !important;
+  font-weight: 600;
+}
+
+/* TOC section title */
+[data-theme='dark'] .theme-doc-toc-desktop {
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.25);
+}
+
+/* ================================================
+   DOCS — BREADCRUMBS
+   ================================================ */
+
+[data-theme='dark'] .breadcrumbs {
+  display: flex;
+  align-items: center;
+  gap: 0.15rem;
+  font-size: 0.8rem;
+}
+
+[data-theme='dark'] .breadcrumbs__item {
+  color: rgba(255, 255, 255, 0.35);
+}
+
+[data-theme='dark'] .breadcrumbs__item--active .breadcrumbs__link {
+  background: rgba(255, 255, 255, 0.08);
+  color: #ffffff;
+  border-radius: 6px;
+  padding: 0.2rem 0.55rem;
+}
+
+[data-theme='dark'] .breadcrumbs__link {
+  border-radius: 6px;
+  padding: 0.2rem 0.55rem;
+  transition: background 0.18s, color 0.18s;
+}
+
+[data-theme='dark'] .breadcrumbs__link:hover {
+  background: rgba(255, 255, 255, 0.06);
+  color: rgba(255, 255, 255, 0.7);
+}
+
+/* ================================================
+   DOCS — EDIT THIS PAGE / LAST UPDATED
+   ================================================ */
+
+[data-theme='dark'] .theme-last-updated {
+  font-size: 0.78rem;
+  color: rgba(255, 255, 255, 0.3);
+  border-top: 1px solid rgba(255, 255, 255, 0.07);
+  padding-top: 1.25rem;
+  margin-top: 2.5rem;
+}
+
+[data-theme='dark'] a.theme-edit-this-page {
+  font-size: 0.82rem;
+  color: rgba(255, 255, 255, 0.35);
+  text-decoration: none;
+  transition: color 0.18s;
+}
+
+[data-theme='dark'] a.theme-edit-this-page:hover {
+  color: #ffffff;
+}
+
+/* ================================================
+   DOCS — DOC PAGE HEADER (version badge, tags row)
+   ================================================ */
+
+[data-theme='dark'] .docItemCol article > header {
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  margin-bottom: 1.5rem;
+}
+
+/* ================================================
+   BLOG — LIST PAGE
+   ================================================ */
+
+/* Blog list wrapper */
+[data-theme='dark'] .blog-list-page,
+[data-theme='dark'] .blogListPage_F5TP {
+  background: transparent !important;
+}
+
+/* Each blog post card in the list */
+[data-theme='dark'] .blog-list-page article,
+[data-theme='dark'] .blogListPage_F5TP article {
+  background: rgba(255, 255, 255, 0.025);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  border-radius: 16px;
+  padding: 2rem 2.25rem;
+  margin-bottom: 1.5rem;
+  transition: transform 0.22s ease, box-shadow 0.22s ease, border-color 0.22s ease, background 0.22s ease;
+}
+
+[data-theme='dark'] .blog-list-page article:hover,
+[data-theme='dark'] .blogListPage_F5TP article:hover {
+  transform: translateY(-3px);
+  background: rgba(255, 255, 255, 0.04);
+  border-color: rgba(255, 255, 255, 0.22);
+  box-shadow: 0 8px 32px rgba(255, 255, 255, 0.08);
+}
+
+/* Blog post title in list */
+[data-theme='dark'] .blog-list-page article h2 a,
+[data-theme='dark'] .blogListPage_F5TP article h2 a {
+  color: #ffffff !important;
+  text-decoration: none !important;
+  border-bottom: none !important;
+  font-size: 1.35rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  transition: color 0.2s;
+}
+
+[data-theme='dark'] .blog-list-page article h2 a:hover,
+[data-theme='dark'] .blogListPage_F5TP article h2 a:hover {
+  color: #ffffff !important;
+}
+
+/* Blog list metadata row (date, reading time, author) */
+[data-theme='dark'] .blog-list-page .BlogPostItem_YW1a header,
+[data-theme='dark'] .blogListPage_F5TP .BlogPostItem_YW1a header {
+  margin-bottom: 0.75rem;
+}
+
+/* Truncation "Read more" link */
+[data-theme='dark'] .blog-list-page .BlogPostItem_YW1a footer,
+[data-theme='dark'] .blogListPage_F5TP .BlogPostItem_YW1a footer {
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+/* ================================================
+   BLOG — TAG PILLS (list + post)
+   ================================================ */
+
+[data-theme='dark'] .tag_zVej,
+[data-theme='dark'] .tags_jXut .tag_zVej,
+[data-theme='dark'] a[class*="tag_"] {
+  background: rgba(255, 255, 255, 0.08) !important;
+  border: 1px solid rgba(255, 255, 255, 0.2) !important;
+  color: #ffffff !important;
+  border-radius: 999px !important;
+  font-size: 0.7rem !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.05em !important;
+  text-transform: uppercase !important;
+  padding: 0.2rem 0.7rem !important;
+  text-decoration: none !important;
+  transition: background 0.18s, border-color 0.18s !important;
+}
+
+[data-theme='dark'] a[class*="tag_"]:hover {
+  background: rgba(255, 255, 255, 0.16) !important;
+  border-color: rgba(255, 255, 255, 0.4) !important;
+  color: #ffffff !important;
+}
+
+/* ================================================
+   BLOG — SINGLE POST PAGE
+   ================================================ */
+
+/* Post header */
+[data-theme='dark'] .blog-post-page article header,
+[data-theme='dark'] .blogPostPage_WMSC article header {
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+  margin-bottom: 2rem;
+}
+
+/* Post h1 */
+[data-theme='dark'] .blog-post-page article h1,
+[data-theme='dark'] .blogPostPage_WMSC article h1,
+[data-theme='dark'] article[class*="blogPost"] h1 {
+  font-size: clamp(1.8rem, 4vw, 2.6rem);
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  color: #ffffff;
+  line-height: 1.2;
+  margin-bottom: 1rem;
+}
+
+/* Post metadata bar */
+[data-theme='dark'] .blogPostPageMetadata_Oqe_ {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  font-size: 0.82rem;
+  color: rgba(255, 255, 255, 0.38);
+}
+
+/* Author avatar */
+[data-theme='dark'] .avatar__photo {
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+}
+
+/* Author name */
+[data-theme='dark'] .avatar__name a {
+  color: rgba(255, 255, 255, 0.7);
+  font-weight: 600;
+  font-size: 0.88rem;
+  text-decoration: none;
+  transition: color 0.18s;
+}
+
+[data-theme='dark'] .avatar__name a:hover {
+  color: #ffffff;
+}
+
+/* Author subtitle (role) */
+[data-theme='dark'] .avatar__subtitle {
+  font-size: 0.75rem;
+  color: rgba(255, 255, 255, 0.3);
+}
+
+/* Author section block at bottom of post */
+[data-theme='dark'] .avatar {
+  background: rgba(255, 255, 255, 0.025);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  border-radius: 14px;
+  padding: 1.25rem 1.5rem;
+  margin-top: 2rem;
+  transition: border-color 0.2s;
+}
+
+[data-theme='dark'] .avatar:hover {
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+/* ================================================
+   BLOG — POST NAVIGATION (prev/next)
+   ================================================ */
+
+[data-theme='dark'] .blogPostPagePagination_WMSC {
+  border-top: 1px solid rgba(255, 255, 255, 0.07);
+  padding-top: 2rem;
+  margin-top: 2.5rem;
+}
+
+/* ================================================
+   BLOG — SIDEBAR (recent posts / tags)
+   ================================================ */
+
+[data-theme='dark'] .blogSidebarContainer_Et5K {
+  border-left: 1px solid rgba(255, 255, 255, 0.06);
+  padding-left: 1.5rem;
+}
+
+[data-theme='dark'] .blogSidebarTitle_GiqR {
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.3);
+  margin-bottom: 0.75rem;
+}
+
+[data-theme='dark'] .blogSidebarItem a {
+  font-size: 0.85rem;
+  color: rgba(255, 255, 255, 0.5);
+  text-decoration: none !important;
+  border-bottom: none !important;
+  transition: color 0.18s;
+  line-height: 1.55;
+}
+
+[data-theme='dark'] .blogSidebarItem a:hover {
+  color: #ffffff;
+}
+
+/* ================================================
+   BLOG — TAGS PAGE (all tags)
+   ================================================ */
+
+[data-theme='dark'] .tagsPageContainer_j7Fy {
+  background: transparent !important;
+}
+
+[data-theme='dark'] .tagListItem_t6ro {
+  background: rgba(255, 255, 255, 0.025);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  border-radius: 12px;
+  padding: 0.85rem 1.25rem;
+  transition: border-color 0.2s, background 0.2s;
+}
+
+[data-theme='dark'] .tagListItem_t6ro:hover {
+  background: rgba(255, 255, 255, 0.06);
+  border-color: rgba(255, 255, 255, 0.25);
+}
+
+/* ================================================
+   DOCS/BLOG SHARED — VERSION BADGE
+   ================================================ */
+
+[data-theme='dark'] .badge--secondary {
+  background: rgba(255, 255, 255, 0.06);
+  color: rgba(255, 255, 255, 0.45);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 999px;
+  font-size: 0.72rem;
+  font-weight: 600;
+}
+
+[data-theme='dark'] .badge--primary {
+  background: rgba(255, 255, 255, 0.1);
+  color: #ffffff;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 999px;
+  font-size: 0.72rem;
+  font-weight: 600;
+}
+
+/* ================================================
+   DOCS/BLOG SHARED — SCROLLBAR
+   ================================================ */
+
+[data-theme='dark'] ::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+[data-theme='dark'] ::-webkit-scrollbar-track {
+  background: rgba(20, 15, 40, 0.4);
+}
+
+[data-theme='dark'] ::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 3px;
+}
+
+[data-theme='dark'] ::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.35);
+}
+
+/* ================================================
+   NAVBAR — visionOS LIQUID UI BUTTONS
+   ================================================ */
+
+/* Navbar items as liquid buttons */
+[data-theme='dark'] .navbar__item {
+  margin: 0 0.25rem;
+}
+
+[data-theme='dark'] .navbar__link {
+  padding: 0.5rem 1rem;
+  border-radius: 999px;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.7) !important;
+  
+  /* Transparent subtle glass */
+  background: rgba(255, 255, 255, 0.05) !important;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.08) !important;
+  
+  box-shadow: none;
+  
+  transition: all 0.2s ease;
+}
+
+[data-theme='dark'] .navbar__link:hover {
+  background: rgba(255, 255, 255, 0.1) !important;
+  border-color: rgba(255, 255, 255, 0.15) !important;
+  color: rgba(255, 255, 255, 0.9) !important;
+  transform: none;
+  box-shadow: none;
+}
+
+/* Active state - subtle highlight */
+[data-theme='dark'] .navbar__link--active {
+  background: rgba(255, 255, 255, 0.12) !important;
+  border-color: rgba(255, 255, 255, 0.2) !important;
+  color: rgba(255, 255, 255, 0.95) !important;
+  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.08) inset;
+}
+
+[data-theme='dark'] .navbar__link--active:hover {
+  background: rgba(255, 255, 255, 0.15) !important;
+  border-color: rgba(255, 255, 255, 0.22) !important;
+}
+
+/* GitHub link (right side) - icon style */
+[data-theme='dark'] .navbar__item--right .navbar__link {
+  padding: 0.5rem 1rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+/* Navbar logo - no liquid effect */
+[data-theme='dark'] .navbar__brand {
+  background: transparent;
+  border: none;
+  box-shadow: none;
+  padding: 0.5rem 0.75rem;
+}
+
+[data-theme='dark'] .navbar__brand:hover {
+  background: rgba(255, 255, 255, 0.05);
+  transform: none;
+}
+
+/* Navbar toggle (mobile menu) - circular liquid button */
+[data-theme='dark'] .navbar__toggle {
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 50%;
+  padding: 0.5rem;
+  transition: all 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+[data-theme='dark'] .navbar__toggle:hover {
+  background: rgba(255, 255, 255, 0.15);
+  border-color: rgba(255, 255, 255, 0.22);
+  transform: translateY(-1px) scale(1.05);
+}
+
+/* Dropdown menu items */
+[data-theme='dark'] .dropdown__link {
+  border-radius: 8px;
+  padding: 0.5rem 0.9rem;
+  transition: all 0.2s ease;
+}
+
+[data-theme='dark'] .dropdown__link:hover {
+  background: rgba(255, 255, 255, 0.12);
+  color: rgba(255, 255, 255, 0.95);
+}
+
+[data-theme='dark'] .dropdown__link--active {
+  background: rgba(255, 255, 255, 0.25);
+  color: #ffffff;
+}
+
+/* Sidebar nav items (mobile) - liquid style */
+[data-theme='dark'] .menu__link {
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  margin-bottom: 0.25rem;
+  transition: all 0.2s ease;
+}
+
+[data-theme='dark'] .menu__link:hover {
+  background: rgba(255, 255, 255, 0.12);
+  border-color: rgba(255, 255, 255, 0.25);
+  color: rgba(255, 255, 255, 0.85);
+}
+
+/* Active sidebar item */
+[data-theme='dark'] .menu__link--active {
+  background: rgba(255, 255, 255, 0.25);
+  border-color: rgba(255, 255, 255, 0.3);
+  color: #ffffff !important;
+  font-weight: 600;
+  box-shadow: 
+    inset 3px 0 0 0 #ffffff,
+    0 2px 8px rgba(255, 255, 255, 0.3);
+}
+
+/* Responsive adjustments */
+@media (max-width: 996px) {
+  [data-theme='dark'] .navbar__link {
+    padding: 0.4rem 0.8rem;
+    font-size: 0.85rem;
+    margin: 0.15rem;
+  }
+}
+
+@media (max-width: 768px) {
+  [data-theme='dark'] .navbar__link {
+    border-radius: 10px;
+    margin: 0.25rem 0;
+  }
+}

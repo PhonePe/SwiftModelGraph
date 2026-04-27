@@ -1,0 +1,90 @@
+/* ================================================================
+   Apple Developer Docs — Feature Cards
+   Clean, minimal cards with subtle borders and blue accents
+   ================================================================ */
+
+.features {
+  padding: 3.5rem 0 4rem;
+  border-bottom: 1px solid var(--apple-separator-color);
+}
+
+.sectionTitle {
+  font-size: 1.65rem;
+  font-weight: 700;
+  letter-spacing: -0.015em;
+  color: var(--apple-text-primary);
+  text-align: center;
+  margin: 0 0 0.4rem;
+}
+
+.sectionSubtitle {
+  text-align: center;
+  font-size: 1rem;
+  color: var(--apple-text-secondary);
+  max-width: 480px;
+  margin: 0 auto 2.5rem;
+  line-height: 1.5;
+}
+
+.featureRow {
+  /* default row styles */
+}
+
+.featureCol {
+  margin-bottom: 1.25rem;
+}
+
+/* Card */
+.featureCard {
+  padding: 1.5rem;
+  height: 100%;
+  border-radius: 12px;
+  background: var(--apple-bg-elevated);
+  border: 1px solid var(--apple-separator-color);
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.featureCard:hover {
+  border-color: var(--apple-border-color);
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+}
+
+[data-theme='dark'] .featureCard:hover {
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.3);
+}
+
+/* Icon */
+.featureIconWrapper {
+  width: 44px;
+  height: 44px;
+  border-radius: 10px;
+  background: var(--apple-fill-blue);
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 0.85rem;
+}
+
+.featureTitle {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--apple-text-primary);
+  margin-bottom: 0.35rem;
+}
+
+.featureDescription {
+  font-size: 0.85rem;
+  color: var(--apple-text-secondary);
+  line-height: 1.55;
+  margin: 0;
+}
+
+.featureDescription code {
+  background: var(--apple-bg-tertiary);
+  border: 1px solid var(--apple-separator-color);
+  color: var(--apple-text-primary);
+  border-radius: 4px;
+  padding: 0.1em 0.35em;
+  font-size: 0.85em;
+}
